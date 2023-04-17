@@ -1,0 +1,228 @@
+/* 通用样式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #8b4513;
+  padding: 1rem 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffe4b5;
+}
+
+main {
+  padding: 2rem;
+}
+
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #8b4513;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* 艺术品详细页面 */
+.artwork-details {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.artwork-details img {
+    max-width: 60%;
+    margin-right: 2rem;
+}
+
+.artwork-details h2,
+.artwork-details h3 {
+    margin-bottom: 1rem;
+}
+
+.artwork-details p {
+    margin-bottom: 1rem;
+}
+
+.artwork-details button {
+    background-color: #8b4513;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.artwork-details button:hover {
+    background-color: #a0522d;
+}
+
+/* 关于我们页面 */
+.about-us {
+    padding: 2rem;
+}
+
+/* 联系我们页面 */
+.contact-us {
+    padding: 2rem;
+}
+
+.contact-us form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-us label {
+    margin-bottom: 0.5rem;
+}
+
+.contact-us input,
+.contact-us textarea {
+    margin-bottom: 1rem;
+    resize: none;
+}
+
+.contact-us button {
+    background-color: #8b4513;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.contact-us button:hover {
+    background-color: #a0522d;
+}
+
+/* 艺术品详细页面 */
+.artwork-details {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.artwork-details img {
+  max-width: 60%;
+  margin-right: 2rem;
+}
+
+.artwork-details h2,
+.artwork-details h3 {
+  margin-bottom: 1rem;
+}
+
+.artwork-details p {
+  margin-bottom: 1rem;
+}
+
+.artwork-details button {
+  background-color: #8b4513;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.artwork-details button:hover {
+  background-color: #a0522d;
+}
+
+/* 关于我们页面 */
+.about-us {
+  padding: 2rem;
+}
+
+/* 联系我们页面 */
+.contact-us {
+  padding: 2rem;
+}
+
+.contact-us form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-us label {
+  margin-bottom: 0.5rem;
+}
+
+.contact-us input,
+.contact-us textarea {
+  margin-bottom: 1rem;
+  resize: none;
+}
+
+.contact-us button {
+  background-color: #8b4513;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.contact-us button:hover {
+  background-color: #a0522d;
+}
+
+/* 页脚样式 */
+footer {
+  background-color: #8b4513;
+  padding: 1rem 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+footer nav li {
+  margin: 0 1rem;
+}
+
+footer nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.copyright {
+  color: #ffffff;
+}
