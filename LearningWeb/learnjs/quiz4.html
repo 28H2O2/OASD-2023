@@ -1,0 +1,23 @@
+<!-- <input type="button" value="Alert!" id="button1" onclick="alert(1);">
+<script type="text/javascript">
+var btn = document.getElementById("button1");
+var oldHandle = btn.onclick // 所有的事件处理函数都赋值给oldHandle
+function newHandle() {alert(2);}
+btn.onclick = function() {oldHandle();newHandle();};
+</script> -->
+
+
+<form id="forml"name="forml">
+  <input type="button" value="button1" id="button1">
+</form>
+<script type="text/javascript">
+  var btn1 = document.getElementById("button1");
+  var forml = document.getElementById("form1");
+  btn1.onclick = function(){
+    alert(1);
+    form1.submit();
+  };
+  forml.onsubmit = function() {
+    alert(2);
+  };
+</script>
