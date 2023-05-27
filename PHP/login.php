@@ -1,6 +1,10 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+// Start a session (if one has not already been started)
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // 定义数据库连接信息
 $servername = "localhost:3306";
 $username = "root";
@@ -29,9 +33,18 @@ if (isset($_POST['register'])) {
     $phone = $_POST['phone'];
     $sex = $_POST['sex'];
     // $birthday = $_POST['birthday'];
-    $birthday = empty($_POST['birthday']) ? '1900-01-01' : $_POST['birthday'];  // 如果生日为空，则设置为 1900-01-01
+    $birthday = empty($_POST['birthday']) ? '1900-01-01' : $_POST['birthday']; // 如果生日为空，则设置为 1900-01-01
     $nationality = $_POST['nationality'];
-
+    // 验证码
+    $captcha = $_POST['captcha'];
+    // 检查验证码是否正确
+    if ($captcha != $_SESSION['captcha']) {
+        echo $captcha;
+        echo "<br>";
+        echo $_SESSION['captcha'];
+        echo "Invalid captcha.";
+        exit();
+    }
     // 检查两次输入的密码是否一致
     if ($password != $confPassword) {
         echo "Passwords do not match.";
@@ -53,21 +66,31 @@ if (isset($_POST['register'])) {
 
             // 执行 SQL 语句
             if ($stmt->execute()) {
-                echo "Registration successful.";    // 注册成功
+                echo "Registration successful."; // 注册成功
             } else {
-                echo "Error: " . $stmt->error;    // 注册失败
-            }   
+                echo "Error: " . $stmt->error; // 注册失败
+            }
         }
 
     }
-} 
+}
 // 处理登录请求
 elseif (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    // 验证码
+    $captcha = $_POST['captcha'];
+    // 检查验证码是否正确
+    if ($captcha != $_SESSION['captcha']) {
+        echo $captcha;
+        echo "<br>";
+        echo $_SESSION['captcha'];
+        echo "Invalid captcha.";
+        exit();
+    }
 
     // 准备查询用户信息的 SQL 语句
-    $stmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT password FROM user WHERE user_name = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
@@ -75,11 +98,16 @@ elseif (isset($_POST['login'])) {
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
-    // 检查密码是否正确
-    if (password_verify($password, $row['password'])) {
-        echo "Login successful.";
+    // 如果查询结果为空，输出提示信息
+    if (!$row) {
+        echo "Username not found.";
     } else {
-        echo "Invalid username or password.";
+        // 检查密码是否正确
+        if (password_verify($password, $row['password'])) {
+            echo "Login successful.";
+        } else {
+            echo "Sorry, password is incorrect.";
+        }
     }
 }
 

@@ -146,6 +146,10 @@
 		<input type="text" id="username" name="username" required>
 		<label for="password">Password:</label>
 		<input type="password" id="password" name="password" required>
+		<!-- 添加验证码输入框 -->
+		<label for="captcha">Captcha:</label>
+		<input type="text" id="captcha" name="captcha" placeholder="Please input captcha" required>
+		<img src="http://localhost:3000/PHP/captcha.php" alt="captcha" id="captchaImage">
 		<input type="submit" value="Login" name="login">
 		<input type="button" id="switchButton" class="register-button" value="Register" onclick="switchForm()">
 	</form>
@@ -209,6 +213,10 @@
 			<option value="Ukraine">Ukraine</option>
 			<option value="United Kingdom">United Kingdom</option>
 		</select>
+		<!-- 添加验证码输入框 -->
+		<label for="captcha">Captcha:</label>
+		<input type="text" id="captcha" name="captcha" placeholder="Please input captcha" required>
+		<img src="http://localhost:3000/PHP/captcha.php" alt="captcha" id="captchaImage">
 		<input type="button" id="switchButton" class="back-button" value="Back" onclick="switchForm()">
 		<input type="submit" value="Register" class="register-button" name="register">
 	</form>
@@ -308,6 +316,7 @@
 	window.onload = function () {
 		var loginForm = document.getElementById('loginForm');
 		var registerForm = document.getElementById('registerForm');
+		// 登录表单的提交
 		loginForm.onsubmit = function (e) {
 			e.preventDefault();
 
@@ -320,6 +329,13 @@
 				if (xhr.status === 200) {
 					// 登录成功后的操作
 					console.log("Login response: ", xhr.responseText);
+					if (xhr.responseText === "Login successful.") {
+						alert("Login successful.");
+						// 跳转到主页
+						window.location.href = "http://localhost:3000/HTML/index.html";
+					} else {
+						alert(xhr.responseText);
+					}
 				} else {
 					// 登录失败的操作
 					console.log("Login failed.");
@@ -327,7 +343,7 @@
 			};
 			xhr.send(formData);
 		};
-
+		// 注册表单的提交
 		registerForm.onsubmit = function (e) {
 			e.preventDefault();
 
@@ -339,13 +355,16 @@
 			xhr.onload = function () {
 				if (xhr.status === 200) {
 					// 注册成功后的操作
-					if (xhr.responseText === "Registration successful.") {
-						alert("Registration successful.");
-					} else if (xhr.responseText === "Username already exists. Please choose another one!") {
-						alert("Username already exists. Please choose another one!");
-					} else if (xhr.responseText === "Passwords do not match.") {
-						alert('Passwords do not match!');
-					}
+					// if (xhr.responseText === "Registration successful.") {
+					// 	alert("Registration successful.");
+					// 	// 切换到登录表单
+					// 	switchForm();
+					// } else if (xhr.responseText === "Username already exists. Please choose another one!") {
+					// 	alert("Username already exists. Please choose another one!");
+					// } else if (xhr.responseText === "Passwords do not match.") {
+					// 	alert('Passwords do not match!');
+					// }
+					alert(xhr.responseText);
 					console.log("Registration response: ", xhr.responseText);
 
 				} else {
