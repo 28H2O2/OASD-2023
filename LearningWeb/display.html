@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <title>显示数据</title>
+</head>
+
+<body>
+  <h1>用户列表</h1>
+
+  <table id="user-table">
+    <tr>
+      <th>ID</th>
+      <th>用户名</th>
+      <th>密码</th>
+    </tr>
+  </table>
+
+  <script>
+    // 使用AJAX从服务器获取数据
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "display.php", true);
+    // 设置请求头，表明接受JSON数据类型
+    xhttp.setRequestHeader("Accept", "application/json");
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        // 将服务器返回的数据解析为JSON格式
+        var data = JSON.parse(this.responseText);
+
+        // 将数据插入到表格中
+        var table = document.getElementById("user-table");
+        data.forEach(function (user) {
+          var row = table.insertRow();
+          row.insertCell().innerHTML = user.id;
+          row.insertCell().innerHTML = user.username;
+          row.insertCell().innerHTML = user.password;
+        });
+      }
+    };
+    xhttp.send();
+  </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>User Data</h2>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Password</th>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>
+
+<script>
+  fetch('display.php')
+    .then(res => res.json())
+    .then(data => {
+      let table = document.querySelector('table')
+      data.forEach(user => {
+        let row = document.createElement('tr')
+        row.innerHTML = `
+      <td>${user.id}</td>
+      <td>${user.user_name}</td>
+      <td>${user.password}</td>
+    `
+        table.appendChild(row)
+      })
+    })
+</script>

@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Display Data</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <table id="data">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
+  </table>
+
+  <script>
+    //NOTE: 终于成功了 淦
+    $.get("http://localhost:3000/LearningWeb/display.php", function (data) {
+      for (var i = 0; i < data.length; i++) {
+        var row = $("<tr><td>" + data[i].id + "</td><td>" + data[i].username + "</td><td>" + data[i].password + "</td></tr>");
+        $("#data").append(row);
+      }
+    });
+  </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Display Data</title>
+</head>
+
+<body>
+  <table id="data">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
+  </table>
+
+  <script>
+    var xhr = new XMLHttpRequest();
+    // xhr.open("GET", "http://localhost:3000/LearningWeb/display.php");
+    xhr.open("GET", "display.php");
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText);
+        for (var i = 0; i < data.length; i++) {
+          var row = document.createElement("tr");
+          var idCell = document.createElement("td");
+          idCell.textContent = data[i].id;
+          var usernameCell = document.createElement("td");
+          usernameCell.textContent = data[i].username;
+          var passwordCell = document.createElement("td");
+          passwordCell.textContent = data[i].password;
+          row.appendChild(idCell);
+          row.appendChild(usernameCell);
+          row.appendChild(passwordCell);
+          document.getElementById("data").appendChild(row);
+        }
+      } else {
+        console.log("Request failed. Returned status: " + xhr.status);
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+
+</html>

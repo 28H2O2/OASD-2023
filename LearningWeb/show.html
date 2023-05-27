@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>展示数据库数据</title>
+</head>
+
+<body>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>用户名</th>
+      <th>密码</th>
+    </tr>
+
+    <?php
+// 数据库连接信息
+$servername = "localhost:3306";
+$username = "root";
+$password = "gansui";
+$dbname = "oasd";
+
+// 创建数据库连接
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// 检查连接是否成功
+if ($conn->connect_error) {
+    die("连接失败: " . $conn->connect_error);
+}
+
+// 查询数据
+$sql = "SELECT id, user_name, password FROM user";
+$result = $conn->query($sql);
+
+// 显示数据
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["id"] . "</td>";
+        echo "<td>" . $row["user_name"] . "</td>";
+        echo "<td>" . $row["password"] . "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "没有数据";
+}
+
+// 关闭数据库连接
+$conn->close();
+?>
+
+  </table>
+
+</body>
+
+</html>

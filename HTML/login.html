@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			background-color: #f5f5f5;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+		}
+
+		form {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 20px;
+			max-width: 500px;
+			margin: 0 auto;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			color: #6e4a3d;
+			text-align: center;
+			margin: 0 0 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			color: #6e4a3d;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="number"] {
+			display: block;
+			width: 90%;
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #6e4a3d;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #8d6d5f;
+		}
+
+		.register-button {
+			background-color: #9b3c3d;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		.back-button {
+			background-color: #db5c2e;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		.select-style {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 5px;
+			font-size: 16px;
+			color: #555;
+			background-color: #fff;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: right 10px center;
+			background-size: 10px 6px;
+			padding-right: 25px;
+		}
+
+		.password-strength-meter {
+			position: relative;
+			height: 4px;
+			background-color: #f2f2f2;
+			margin: 10px 0;
+		}
+
+		.strength-meter-fill {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			background-color: #4caf50;
+			transition: width 0.25s ease-in-out;
+		}
+
+		#password-strength-text {
+			display: block;
+			margin-top: 5px;
+			font-size: 12px;
+		}
+
+		.custom-alert {
+			background-color: #f5f5f5;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 10px;
+			width: 300px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<form id="loginForm" method="post">
+		<h1>Login</h1>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+		<input type="submit" value="Login" name="login">
+		<input type="button" id="switchButton" class="register-button" value="Register" onclick="switchForm()">
+	</form>
+	<form id="registerForm" onsubmit="return validatePhoneNumber()" method="post" style="display: none;">
+		<h1>Register</h1>
+		<label for="regUsername"><strong>Username:</strong></label>
+		<input type="text" id="regUsername" name="regUsername" placeholder="Please enter your username" required>
+		<label for="regPassword"><strong>Password:</strong></label>
+		<input type="password" id="regPassword" name="regPassword" placeholder="Enter your password" required>
+		<div class="password-strength-meter">
+			<div class="strength-meter-fill"></div>
+		</div>
+		<span id="password-strength-text"></span>
+		<input type="password" id="confPassword" name="confPassword" placeholder="Confirm password" required>
+		<h2>The following are optional choices</h2>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" placeholder="Enter your email">
+		<label for="phone">Phone:</label>
+		<input type="text" id="phone" name="phone" placeholder="Enter your phone number" onblur="checkPhoneNumber()">
+		<label for="sex">Sex:</label>
+		<select id="sex" name="sex" class="select-style">
+			<option value="">-- Please select --</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+		<label for="birthday">Birthday:</label>
+		<input type="date" id="birthday" name="birthday">
+		<label for="nationality">Nationality:</label>
+		<select id="nationality" name="nationality" class="select-style">
+			<option value="">-- Please select --</option>
+			<option value="China">China</option>
+			<option value="America">America</option>
+			<option value="England">England</option>
+			<option value="France">France</option>
+			<option value="Germany">Germany</option>
+			<option value="Japan">Japan</option>
+			<option value="Korea">Korea</option>
+			<option value="Russia">Russia</option>
+			<option value="Spain">Spain</option>
+			<option value="Thailand">Thailand</option>
+			<option value="Vietnam">Vietnam</option>
+			<option value="Australia">Australia</option>
+			<option value="Brazil">Brazil</option>
+			<option value="Canada">Canada</option>
+			<option value="Egypt">Egypt</option>
+			<option value="Greece">Greece</option>
+			<option value="India">India</option>
+			<option value="Indonesia">Indonesia</option>
+			<option value="Iran">Iran</option>
+			<option value="Italy">Italy</option>
+			<option value="Mexico">Mexico</option>
+			<option value="Nigeria">Nigeria</option>
+			<option value="Pakistan">Pakistan</option>
+			<option value="Philippines">Philippines</option>
+			<option value="Poland">Poland</option>
+			<option value="Portugal">Portugal</option>
+			<option value="Saudi Arabia">Saudi Arabia</option>
+			<option value="South Africa">South Africa</option>
+			<option value="Turkey">Turkey</option>
+			<option value="Ukraine">Ukraine</option>
+			<option value="United Kingdom">United Kingdom</option>
+		</select>
+		<input type="button" id="switchButton" class="back-button" value="Back" onclick="switchForm()">
+		<input type="submit" value="Register" class="register-button" name="register">
+	</form>
+	<!-- <button class="button" onclick="switchForm()">Register</button> -->
+</body>
+
+</html>
+
+<script>
+	function switchForm() {
+		// 获取登录表单和注册表单的 DOM 元素
+		var loginForm = document.getElementById('loginForm');
+		var registerForm = document.getElementById('registerForm');
+
+		// 切换登录表单的显示状态
+		if (loginForm.style.display === 'none') {
+			loginForm.style.display = 'block';
+		} else {
+			loginForm.style.display = 'none';
+		}
+
+		// 切换注册表单的显示状态
+		if (registerForm.style.display === 'none') {
+			registerForm.style.display = 'block';
+		} else {
+			registerForm.style.display = 'none';
+		}
+	}
+	// 手机号码检测
+	function checkPhoneNumber() {
+		var phoneNumber = document.getElementById("phone").value;
+		if (phoneNumber.length !== 11) {
+			alert("Please enter a valid 11-digit phone number.");
+			return false;
+		}
+		return true;
+	}
+	// 提交时检测手机号码
+	function validatePhoneNumber() {
+		var phoneNumber = document.getElementById("phone").value;
+		if (phoneNumber.length !== 11) {
+			alert("Please enter a valid 11-digit phone number.");
+			return false;
+		}
+		return true;
+	}
+	// 密码强度检测
+	const passwordInput = document.getElementById('regPassword');
+	const passwordStrengthMeter = document.querySelector('.password-strength-meter');
+	const passwordStrengthFill = document.querySelector('.strength-meter-fill');
+	const passwordStrengthText = document.querySelector('#password-strength-text');
+
+	function updatePasswordStrength() {
+		const password = passwordInput.value;
+		const passwordStrength = calculatePasswordStrength(password);
+
+		passwordStrengthFill.style.width = `${passwordStrength}%`;
+		passwordStrengthText.innerText = getPasswordStrengthText(passwordStrength);
+	}
+
+	function getPasswordStrengthText(strength) {
+		if (strength < 40) {
+			return "Weak - Passwords should include numbers, upper and lower case letters, and special characters.";
+		} else if (strength < 60) {
+			return "Fair";
+		} else if (strength < 80) {
+			return "Good";
+		} else if (strength < 100) {
+			return "Strong";
+		} else {
+			return "Very strong";
+		}
+	}
+
+	function calculatePasswordStrength(password) {
+		let strength = 0;
+		if (password.length >= 8) {
+			strength += 1;
+		}
+		if (password.match(/[a-z]+/)) {
+			strength += 1;
+		}
+		if (password.match(/[A-Z]+/)) {
+			strength += 1;
+		}
+		if (password.match(/[0-9]+/)) {
+			strength += 1;
+		}
+		if (password.match(/[^a-zA-Z0-9]+/)) {
+			strength += 1;
+		}
+		return strength * 20;
+	}
+	// 监听密码输入框的输入事件
+	passwordInput.addEventListener('input', updatePasswordStrength);
+	// 登录和注册表单的提交
+	window.onload = function () {
+		var loginForm = document.getElementById('loginForm');
+		var registerForm = document.getElementById('registerForm');
+		loginForm.onsubmit = function (e) {
+			e.preventDefault();
+
+			var xhr = new XMLHttpRequest();
+			var formData = new FormData(loginForm);
+			formData.append('login', true);  // 添加登录请求的标识符
+
+			xhr.open('POST', 'http://localhost:3000/PHP/login.php', true);
+			xhr.onload = function () {
+				if (xhr.status === 200) {
+					// 登录成功后的操作
+					console.log("Login response: ", xhr.responseText);
+				} else {
+					// 登录失败的操作
+					console.log("Login failed.");
+				}
+			};
+			xhr.send(formData);
+		};
+
+		registerForm.onsubmit = function (e) {
+			e.preventDefault();
+
+			var xhr = new XMLHttpRequest();
+			var formData = new FormData(registerForm);
+			formData.append('register', true);  // 添加注册请求的标识符
+
+			xhr.open('POST', 'http://localhost:3000/PHP/login.php', true);
+			xhr.onload = function () {
+				if (xhr.status === 200) {
+					// 注册成功后的操作
+					if (xhr.responseText === "Registration successful.") {
+						alert("Registration successful.");
+					} else if (xhr.responseText === "Username already exists. Please choose another one!") {
+						alert("Username already exists. Please choose another one!");
+					} else if (xhr.responseText === "Passwords do not match.") {
+						alert('Passwords do not match!');
+					}
+					console.log("Registration response: ", xhr.responseText);
+
+				} else {
+					// 注册失败的操作
+					console.log("Registration failed.");
+				}
+			};
+			xhr.send(formData);
+		};
+	};
+</script>

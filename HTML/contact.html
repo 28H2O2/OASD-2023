@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>艺术品详细信息 - 艺术品交易网站</title>
-  <link rel="stylesheet" href="./CSS/styles.css">
+  <title>联系我们 - 艺术品交易网站</title>
+  <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 
 <body>
@@ -19,13 +19,20 @@
   </nav>
 
   <main>
-    <section class="artwork-details">
-      <h2>艺术品名称</h2>
-      <img src="artwork_image.jpg" alt="艺术品图片">
-      <h3>作者：艺术家名称</h3>
-      <p>作品描述：</p>
-      <p>价格：728</p>
-      <button>购买</button>
+    <section class="contact-us">
+      <h2>联系我们</h2>
+      <form>
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">电子邮件：</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">留言：</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">提交</button>
+      </form>
     </section>
   </main>
 
@@ -44,6 +51,7 @@
         </div>
     </div>
 </footer>
+
 
 </body>
 
