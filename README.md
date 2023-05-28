@@ -5,4 +5,5 @@ HTML + CSS + Javascript + PHP
 
 2023spring
 
-## 洪淳宇 21302010035
+An art gallery trading website.
+<!-- ## 洪淳宇 21302010035 -->
