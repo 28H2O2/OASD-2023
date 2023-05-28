@@ -103,7 +103,7 @@ a {
 }
 
 a:hover {
-  color: #cd853f;
+  color: #ce8c45;
 }
 
 .dropdown-content {
@@ -112,5 +112,5 @@ a:hover {
 }
 
 .dropdown-content a:hover {
-  background-color: #cd853f;
+  background-color: #ecd3b9;
 }

@@ -105,6 +105,8 @@ elseif (isset($_POST['login'])) {
         // 检查密码是否正确
         if (password_verify($password, $row['password'])) {
             echo "Login successful.";
+            // 在登录成功后将用户名存储在 $_SESSION 变量中
+            $_SESSION['username'] = $username;
         } else {
             echo "Sorry, password is incorrect.";
         }
