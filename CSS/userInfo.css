@@ -1,3 +1,49 @@
+.container {
+  background-color: #f9e8c1;
+  font-family: 'Montserrat Thin', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 90vh
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #FFF8DC;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.sidebar a {
+  display: block;
+  color: #8B4513;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  flex-grow: 1;
+  max-width: 800px;
+  /* You can adjust this value as per your requirement */
+  background-color: #FFF8DC;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
 h1 {
   text-align: center;
   color: #8B4513;
@@ -5,26 +51,22 @@ h1 {
 
 .userInfo {
   margin: 0 auto;
-  width: 50%;
-  background-color: #FFF8DC;
   padding: 20px;
   border-radius: 10px;
 }
 
-label {
-  display: block;
+.userInfo label {
+  display: inline-block;
   margin-bottom: 10px;
   color: #8B4513;
 }
 
-/* span {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: none;
-} */
+.userInfo span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #A0522D;
+  /* Different color for the content inside the username */
+}
 
 .account {
   margin-top: 50px;
@@ -54,4 +96,18 @@ label {
 
 .recharge a:hover {
   text-decoration: underline;
+}
+
+#showUsername {
+  font-size: 30px;
+  color: #643c0f;
+}
+
+#email,
+#phone,
+#sex,
+#birthday,
+#nationality {
+  font-size: 25px;
+  color: #642a0f;
 }

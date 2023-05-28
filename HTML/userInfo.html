@@ -12,29 +12,72 @@
 <body>
   <header id="header">
   </header>
-  <h1>User Info</h1>
-  <div class="userInfo">
-    <label for="username">Username:</label>
-    <span id="username" name="username">111</span>
-    <label for="email">Email:</label>
-    <span id="email" name="email"></span>
-    <label for="phone">Phone:</label>
-    <span id="phone" name="phone"></span>
-    <label for="sex">Sex:</label>
-    <span id="sex" name="sex"></span>
-    <label for="nationality">Nationality:</label>
-    <span id="nationality" name="nationality"></span>
+  <div class="container">
+    <div class="sidebar">
+      <a href="#" data-page="userInfo">User Info</a>
+      <a href="#" data-page="account">Account Balance</a>
+      <a href="#" data-page="orders">Orders</a>
+      <a href="#" data-page="products">My Products</a>
+    </div>
+    <div class="main">
+      <div id="userInfo" class="page active">
+        <h1>User Info</h1>
+        <div class="userInfo">
+          <div class="username">
+            <label for="username">Username: </label>
+            <span id="showUsername" name="username"></span>
+          </div>
+          <div class="email">
+            <label for="email">Email: </label>
+            <span id="email" name="email"></span>
+          </div>
+          <div class="phone">
+            <label for="phone">Phone: </label>
+            <span id="phone" name="phone"></span>
+          </div>
+          <div class="sex">
+            <label for="sex">Sex: </label>
+            <span id="sex" name="sex"></span>
+          </div>
+          <div class="birthday">
+            <label for="birthday">Birthday: </label>
+            <span id="birthday" name="birthday"></span>
+          </div>
+          <div class="nationality">
+            <label for="nationality">Nationality: </label>
+            <span id="nationality" name="nationality"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="account" class="page">
+        <h1>Account Balance</h1>
+        <!-- Your Account Balance Code Here -->
+      </div>
+      <div id="orders" class="page">
+        <h1>Orders</h1>
+        <!-- Your Orders Code Here -->
+      </div>
+      <div id="products" class="page">
+        <h1>My Products</h1>
+        <!-- Your My Products Code Here -->
+      </div>
+    </div>
   </div>
-  <div class="account">
-    <a href="#">My Account</a>
-  </div>
-  <div class="recharge">
-    <a href="#">Recharge</a>
-  </div>
+
+  <script src="../js/switchUserSideBar.js"></script>
+  <!-- <script src="../js/showUserInfo.js"></script> -->
   <footer id="footer">
   </footer>
 </body>
-<script src="userInfo.js"></script>
+<script src="../js/showUserInfo.js"></script>
 <script src="../js/header.js"></script>
+<script>
+  window.onload = function () {
+    loadHeader();
+    showUserInfo();
+  }
+</script>
 
 </html>

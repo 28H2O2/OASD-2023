@@ -30,7 +30,7 @@ if ($conn->connect_error) {
 }
 
 // 查询数据
-$sql = "SELECT id, user_name, password FROM user";
+$sql = "SELECT id, username, password FROM user";
 $result = $conn->query($sql);
 
 // 显示数据
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["id"] . "</td>";
-        echo "<td>" . $row["user_name"] . "</td>";
+        echo "<td>" . $row["username"] . "</td>";
         echo "<td>" . $row["password"] . "</td>";
         echo "</tr>";
     }

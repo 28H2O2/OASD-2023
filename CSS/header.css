@@ -1,4 +1,5 @@
 body {
+  font-family: 'Montserrat Thin', sans-serif;
   margin: 0;
   min-height: 100vh;
   display: flex;
@@ -77,10 +78,15 @@ body {
   position: absolute;
   z-index: 1;
   min-width: 160px;
-  margin-top: 5px;
+  margin-top: 0;
+  /* change from 5px to 0 to avoid gap */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #f5deb3;
   border: 1px solid #8b4513;
+  transition: opacity 0.5s ease, visibility 0.5s;
+  /* add transition */
+  opacity: 0;
+  visibility: hidden;
 }
 
 #header .dropdown-content a {
@@ -95,6 +101,9 @@ body {
 
 #header .dropdown:hover .dropdown-content {
   display: block;
+  opacity: 1;
+  visibility: visible;
+  /* add visibility */
 }
 
 #header .dropbtn {
@@ -102,6 +111,7 @@ body {
   align-items: center;
   cursor: pointer;
 }
+
 
 #header .caret {
   margin-left: 5px;

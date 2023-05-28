@@ -65,3 +65,7 @@ input[type="submit"]:hover,
   text-align: center;
   color: #8B4513;
 }
+
+#switchButton {
+  background-color: #d47939;
+}

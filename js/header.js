@@ -1,4 +1,4 @@
-window.onload = function () {
+function loadHeader() {
   document.getElementById("header").innerHTML = `
     <div class="logo">
       <a href="index.html"><h1>Art Gallery</h1></a>

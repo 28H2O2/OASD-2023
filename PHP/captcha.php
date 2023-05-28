@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // 确定随机种子
-$seed = floor(time() / 3600); // 以小时为单位
+$seed = floor(time() / 2); // 以2秒为单位
 
 // 使用相同的随机种子生成验证码和干扰线
 mt_srand($seed);
