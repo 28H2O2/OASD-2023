@@ -1,116 +1,116 @@
-header {
+body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#footer {
+  font-family: 'Montserrat Thin', sans-serif;
+  ;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f5deb3;
+  text-align: center;
+}
+
+#header {
+  font-family: 'Montserrat Thin', sans-serif;
+  ;
+  margin: 0;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 70px;
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: #f5deb3;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.logo img {
+#header span {
+  font-size: 18px;
+  color: #8b4513;
+}
+
+#header .logo img {
   height: 50px;
 }
 
-.logo h1 {
+#header .logo h1 {
   font-size: 28px;
   margin-left: 10px;
-  color: #333;
+  color: #8b4513;
 }
 
-nav {
+#header nav {
   margin-left: 20px;
 }
 
-ul {
+#header ul {
   display: flex;
   align-items: center;
   list-style: none;
 }
 
-li {
+#header li {
   margin-left: 30px;
 }
 
-a {
+#header a {
   text-decoration: none;
-  color: #333;
+  color: #8b4513;
 }
 
-a:hover {
-  color: #f16624;
+#header a:hover {
+  color: #ce8c45;
 }
 
-.dropdown {
+#header .dropdown {
   position: relative;
 }
 
-.dropdown-content {
+#header .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
   min-width: 160px;
   margin-top: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f5deb3;
+  border: 1px solid #8b4513;
 }
 
-.dropdown-content a {
+#header .dropdown-content a {
   display: block;
   padding: 10px;
   font-size: 14px;
 }
 
-.dropdown-content a:hover {
-  background-color: #f5f5f5;
+#header .dropdown-content a:hover {
+  background-color: #ecd3b9;
 }
 
-.dropdown:hover .dropdown-content {
+#header .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropbtn {
+#header .dropbtn {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.caret {
+#header .caret {
   margin-left: 5px;
   border-top: 5px solid #333;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
 
-.fas {
+#header .fas {
   font-size: 18px;
   margin-right: 5px;
-}
-
-/* 新增样式 */
-header {
-  background-color: #f5deb3;
-}
-
-.logo h1 {
-  color: #8b4513;
-}
-
-a {
-  color: #8b4513;
-}
-
-a:hover {
-  color: #ce8c45;
-}
-
-.dropdown-content {
-  background-color: #f5deb3;
-  border: 1px solid #8b4513;
-}
-
-.dropdown-content a:hover {
-  background-color: #ecd3b9;
 }

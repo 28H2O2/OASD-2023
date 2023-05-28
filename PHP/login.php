@@ -39,9 +39,6 @@ if (isset($_POST['register'])) {
     $captcha = $_POST['captcha'];
     // 检查验证码是否正确
     if ($captcha != $_SESSION['captcha']) {
-        echo $captcha;
-        echo "<br>";
-        echo $_SESSION['captcha'];
         echo "Invalid captcha.";
         exit();
     }
@@ -52,11 +49,18 @@ if (isset($_POST['register'])) {
         // 对密码进行哈希处理
         $hash = password_hash($password, PASSWORD_BCRYPT);
 
-        // 检查用户名是否已存在
+        // 准备 SQL 查询语句，使用占位符 ? 来代替实际的参数值
         $stmt = $conn->prepare("SELECT user_name FROM user WHERE user_name = ?");
+
+        // 将参数绑定到语句中，使用 "s" 表示参数类型为字符串，$username 是要绑定的参数值
         $stmt->bind_param("s", $username);
+
+        // 执行查询
         $stmt->execute();
+
+        // 获取结果集
         $result = $stmt->get_result();
+        // 检查用户名是否已存在
         if ($result->num_rows > 0) {
             echo "Username already exists. Please choose another one!";
         } else {
@@ -90,6 +94,7 @@ elseif (isset($_POST['login'])) {
     }
 
     // 准备查询用户信息的 SQL 语句
+    // NOTE：这里防止了SQL注入
     $stmt = $conn->prepare("SELECT password FROM user WHERE user_name = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();

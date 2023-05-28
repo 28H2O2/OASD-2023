@@ -1,132 +1,67 @@
 /* 注册登录样式 */
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  background-color: #F5DEB3;
+  font-family: 'Montserrat Thin', sans-serif;
 }
 
 form {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #FFF8DC;
+  border: none;
+  border-radius: 10px;
   padding: 20px;
-  max-width: 500px;
+  width: 50%;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  color: #6e4a3d;
+  color: #8B4513;
   text-align: center;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
   margin-bottom: 10px;
-  color: #6e4a3d;
+  color: #8B4513;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="number"] {
+input[type="number"],
+.select-style {
   display: block;
-  width: 90%;
+  width: 100%;
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
-input[type="submit"] {
-  background-color: #6e4a3d;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #8d6d5f;
-}
-
-.register-button {
-  background-color: #9b3c3d;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
+input[type="submit"],
+.register-button,
 .back-button {
-  background-color: #db5c2e;
+  background-color: #8B4513;
+  color: #FFFFFF;
   border: none;
-  color: white;
+  border-radius: 5px;
   padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-.select-style {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  color: #555;
-  background-color: #fff;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 10px 6px;
-  padding-right: 25px;
-}
-
-.password-strength-meter {
-  position: relative;
-  height: 4px;
-  background-color: #f2f2f2;
-  margin: 10px 0;
-}
-
-.strength-meter-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: #4caf50;
-  transition: width 0.25s ease-in-out;
-}
-
-#password-strength-text {
-  display: block;
-  margin-top: 5px;
-  font-size: 12px;
+input[type="submit"]:hover,
+.register-button:hover,
+.back-button:hover {
+  background-color: #A0522D;
 }
 
 .custom-alert {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  width: 300px;
+  background-color: #F5DEB3;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
   margin: 0 auto;
   text-align: center;
+  color: #8B4513;
 }

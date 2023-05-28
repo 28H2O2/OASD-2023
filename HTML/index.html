@@ -4,31 +4,11 @@
 <head>
   <title>Art Gallery</title>
   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../CSS/header.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/global.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../CSS/header.css"> -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      margin: 0;
-      padding: 20px;
-    }
-
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 50px;
-      background-color: #f5deb3;
-      text-align: center;
+      margin: 0;
     }
   </style>
 </head>
@@ -48,40 +28,7 @@
   </footer>
 
   <script src="../js/header.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // 创建 XMLHttpRequest 对象
-      var xhr = new XMLHttpRequest();
 
-      // 设置请求的 URL 和方法
-      xhr.open('GET', 'http://localhost:3000/PHP/getUsername.php');
-
-      // 设置请求完成后的回调函数
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          // 将用户名存储在 span 元素中
-          if (xhr.responseText == '') {
-            document.getElementById('username').textContent = "未登录";
-            document.getElementById('dropdown').style.display = "none";
-            document.getElementById('loginButton').style.display = "inline";
-            document.getElementById('logoutButton').style.display = "none";
-            document.getElementById('shoppingCart').style.display = "none";
-          } else {  //* 如果已经登录，则隐藏登录按钮，显示用户名
-            document.getElementById('loginButton').style.display = "none";
-            document.getElementById('logoutButton').style.display = "inline";
-            var username = document.getElementById('username')
-            username.style.display = "inline";
-            username.textContent = xhr.responseText;
-
-            // document.getElementById('username').textContent = xhr.responseText;
-          }
-        };
-      }
-      // 发送 AJAX 请求
-      xhr.send();
-    });
-
-  </script>
 </body>
 
 </html>

@@ -1,0 +1,42 @@
+main {
+  background-color: #f3e5d2;
+  padding: 30px;
+  min-height: 80vh;
+}
+
+h1 {
+  text-align: center;
+  color: #6e4d2d;
+}
+
+.profile {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile img {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile h2 {
+  color: #6e4d2d;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  color: #2d1f11;
+  font-size: 0.9em;
+}
+
+.profile a {
+  color: #FF5733;
+}
+
+.profile a:hover {
+  color: #d95800;
+}
