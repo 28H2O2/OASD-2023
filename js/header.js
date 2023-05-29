@@ -7,6 +7,7 @@ function loadHeader() {
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="index.html">Home</a></li>
+        <li><span id="issue"><a href="issue.html">Issue</a></span></li>
         <li><span id="shoppingCart"><a href="shoppingCart.html">ShoppingCart</a></span></li>
         <li ><span id="loginButton"><a href="login.html">Login</a></span></li>
         <li><span id="logoutButton" ><a href="login.html" onclick="Logout()">Logout</a></span></li>
@@ -16,8 +17,6 @@ function loadHeader() {
           <a href="javascript:void(0)" class="dropbtn"><i class="fas fa-user"></i> <span id="username" style="display: none;"></span> <span class="caret"></span></a>
           <div class="dropdown-content">
             <a href="http://localhost:3000/HTML/userInfo.html">Profile</a>
-            <a href="#">Settings</a>
-            <a href="#">Log out</a>
           </div>
         </span>
         </li>
@@ -50,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('loginButton').style.display = "inline";
         document.getElementById('logoutButton').style.display = "none";
         document.getElementById('shoppingCart').style.display = "none";
+        document.getElementById('issue').style.display = "none";
       } else {  //* 如果已经登录，则隐藏登录按钮，显示用户名
         document.getElementById('loginButton').style.display = "none";
         document.getElementById('logoutButton').style.display = "inline";

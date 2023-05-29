@@ -84,38 +84,6 @@
 <script src="../js/showUserInfo.js"></script>
 <script src="../js/header.js"></script>
 <script>
-  // Prevent negative recharge amount
-  // document.getElementById('rechargeForm').addEventListener('submit', function (e) {
-  //   var amount = document.getElementById('rechargeAmount').value;
-  //   if (amount <= 0) {
-  //     alert("Please enter a positive integer.");
-  //     e.preventDefault();
-  //     return;
-  //   }
-  //   if (confirm("Are you sure you want to recharge?")) {
-  //     // 继续执行提交表单的操作
-  //     let amount = document.getElementById('rechargeAmount').value;
-  //     fetch('http://localhost:3000/PHP/recharge.php', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ amount }),
-  //     })
-  //       .then(response => response.json())
-  //       .then(data => {
-  //         if (data.error) {
-  //           alert('Recharge failed: ' + data.error);
-  //         } else {
-  //           document.getElementById('balance').textContent = data.balance;
-  //           document.getElementById('rechargeAmount').value = '';
-  //         }
-  //       });
-  //   } else {
-  //     e.preventDefault(); // 阻止表单提交
-  //   }
-  // });
-
   window.addEventListener('DOMContentLoaded', (event) => {
     fetch('http://localhost:3000/PHP/getAccountInfo.php')
       .then(response => response.json())
