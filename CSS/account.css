@@ -1,0 +1,39 @@
+.accountInfo {
+  margin: 0 auto;
+  width: 50%;
+  background-color: #FFF8DC;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.account label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8B4513;
+}
+
+input[type="number"] {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #8B4513;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+input[type="submit"]:hover {
+  background-color: #A52A2A;
+}
+
+#rechargeAmount {
+  height: 30px;
+  width: 150px;
+  background-color: #ffffcc;
+}

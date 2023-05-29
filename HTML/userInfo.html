@@ -7,6 +7,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="../CSS/global.css">
   <link rel="stylesheet" type="text/css" href="../CSS/userInfo.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/account.css">
 </head>
 
 <body>
@@ -53,15 +54,24 @@
 
       <div id="account" class="page">
         <h1>Account Balance</h1>
-        <!-- Your Account Balance Code Here -->
+        <div class="accountInfo">
+          <label for="balance">Balance:</label>
+          <span id="balance" name="balance"></span>
+          <form id="rechargeForm">
+            <label for="rechargeAmount">Recharge Amount:</label>
+            <input type="number" id="rechargeAmount" name="rechargeAmount">
+            <input type="submit" value="Recharge">
+          </form>
+        </div>
       </div>
+
       <div id="orders" class="page">
         <h1>Orders</h1>
-        <!-- Your Orders Code Here -->
+        <!-- TODO: Your Orders Code Here -->
       </div>
       <div id="products" class="page">
         <h1>My Products</h1>
-        <!-- Your My Products Code Here -->
+        <!-- TODO: Your My Products Code Here -->
       </div>
     </div>
   </div>
@@ -74,9 +84,91 @@
 <script src="../js/showUserInfo.js"></script>
 <script src="../js/header.js"></script>
 <script>
+  // Prevent negative recharge amount
+  // document.getElementById('rechargeForm').addEventListener('submit', function (e) {
+  //   var amount = document.getElementById('rechargeAmount').value;
+  //   if (amount <= 0) {
+  //     alert("Please enter a positive integer.");
+  //     e.preventDefault();
+  //     return;
+  //   }
+  //   if (confirm("Are you sure you want to recharge?")) {
+  //     // 继续执行提交表单的操作
+  //     let amount = document.getElementById('rechargeAmount').value;
+  //     fetch('http://localhost:3000/PHP/recharge.php', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ amount }),
+  //     })
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         if (data.error) {
+  //           alert('Recharge failed: ' + data.error);
+  //         } else {
+  //           document.getElementById('balance').textContent = data.balance;
+  //           document.getElementById('rechargeAmount').value = '';
+  //         }
+  //       });
+  //   } else {
+  //     e.preventDefault(); // 阻止表单提交
+  //   }
+  // });
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    fetch('http://localhost:3000/PHP/getAccountInfo.php')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('balance').textContent = data.balance;
+      });
+
+    document.getElementById('rechargeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let amount = document.getElementById('rechargeAmount').value;
+      if (amount <= 0) {
+        alert("Please enter a positive integer.");
+        e.preventDefault();
+        return;
+      }
+      if (confirm("Are you sure you want to recharge?")) {
+        fetch('http://localhost:3000/PHP/recharge.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.error) {
+              alert('Recharge failed: ' + data.error);
+            } else {
+              document.getElementById('balance').textContent = data.balance;
+              document.getElementById('rechargeAmount').value = '';
+            }
+          });
+      } else {
+        e.preventDefault(); // 阻止表单提交
+        return;
+      }
+
+    });
+  });
+  function showAccount() {
+    fetch('http://localhost:3000/PHP/getAccountInfo.php')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('balance').textContent = data.balance;
+      });
+  }
+
+</script>
+<script>
   window.onload = function () {
     loadHeader();
     showUserInfo();
+    showAccount();
   }
 </script>
 
