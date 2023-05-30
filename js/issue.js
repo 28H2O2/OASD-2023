@@ -28,6 +28,12 @@ const form = document.getElementById('issueForm');
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  let price = document.getElementById('price').value;
+  if (price <= 0) {
+    alert("Please enter a positive integer.");
+    event.preventDefault();
+    return;
+  }
   const formData = new FormData(form);
 
   const response = await fetch('http://localhost:3000/PHP/issueArtwork.php', {

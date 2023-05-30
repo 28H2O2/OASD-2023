@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Art Gallery</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../CSS/global.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/issue.css">
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header"></header>
+  <main>
+    <h2>Edit Artwork</h2>
+    <form id="issueForm" enctype="multipart/form-data">
+      <label for="id" style="display: none;">ID:</label>
+      <input type="text" id="id" name="id" style="display: none;">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required>
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" name="genre" required>
+      <label for="size">Size:</label>
+      <input type="text" id="size" name="size" required>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required>
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" required>
+      <img id="preview" src="" alt="Image preview...">
+      <input type="submit" value="Issue">
+    </form>
+  </main>
+
+  <footer id="footer"></footer>
+  <script>
+    // 获取存储在sessionStorage中的数据
+    const artwork = JSON.parse(sessionStorage.getItem('editArtwork'));
+
+    // 获取表单中每个输入字段的引用
+    const idInput = document.getElementById('id');
+    const nameInput = document.getElementById('name');
+    const authorInput = document.getElementById('author');
+    const descriptionInput = document.getElementById('description');
+    const yearInput = document.getElementById('year');
+    const genreInput = document.getElementById('genre');
+    const sizeInput = document.getElementById('size');
+    const priceInput = document.getElementById('price');
+    const imageInput = document.getElementById('image');
+
+    // 将sessionStorage中存储的数据分配给相应的字段
+    idInput.value = artwork.id;
+    nameInput.value = artwork.name;
+    authorInput.value = artwork.author;
+    descriptionInput.value = artwork.description;
+    yearInput.value = artwork.year;
+    genreInput.value = artwork.genre;
+    sizeInput.value = artwork.size;
+    priceInput.value = artwork.price;
+    imageInput.value = artwork.image;
+  </script>
+  <script src="../js/editArtwork.js"></script>
+  <script src="../js/header.js"></script>
+  <script>
+    window.onload = function () {
+      loadHeader();
+    }
+  </script>
+</body>
+
+</html>

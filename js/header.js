@@ -27,7 +27,7 @@ function loadHeader() {
 
   document.getElementById("footer").innerHTML = `
     <div class="info">       
-      <p>&copy; 2023 Art Gallery. All Rights Reserved.</p>        
+      <p>&copy; 2023 HCY. All Rights Reserved.</p>        
     </div>   
   `;
 };

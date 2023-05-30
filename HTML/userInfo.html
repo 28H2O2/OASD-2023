@@ -152,55 +152,66 @@
   }
 
 </script>
+
 <script>
-  async function loadProducts() {
-    const response = await fetch('http://localhost:3000/PHP/getUserProducts.php', {
-      method: 'GET', // or 'POST'
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const products = await response.json();
+  async function getMyArtworks() {
+    const response = await fetch('http://localhost:3000/PHP/getUserProducts.php');
+    const result = await response.json();
 
-    const table = document.getElementById('product-table');
+    if (result.success) {
+      const table = document.createElement('table');
+      // Add Header Row
+      const headerRow = document.createElement('tr');
+      const headers = ['id', 'name', 'author', 'description', 'year', 'genre', 'size', 'price', 'image', ''];
+      headers.forEach((header) => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+      result.artworks.forEach((artwork) => {
+        const tr = document.createElement('tr');
 
-    // Create table header
-    const thead = document.createElement('thead');
-    const tr = document.createElement('tr');
-    ['Name', 'Author', 'Year', 'Genre', 'Dimensions', 'Price', 'Image', 'Actions'].forEach(header => {
-      const th = document.createElement('th');
-      th.textContent = header;
-      tr.appendChild(th);
-    });
-    thead.appendChild(tr);
-    table.appendChild(thead);
 
-    // Create table body
-    const tbody = document.createElement('tbody');
-    products.forEach(product => {
-      const tr = document.createElement('tr');
+        // Display each attribute in a separate cell
+        Object.values(artwork).forEach((value, index) => {
+          const td = document.createElement('td');
+          if (index === Object.values(artwork).length - 1) {
+            // This is the image, create an img element
+            const img = document.createElement('img');
+            img.src = value;
+            img.style.width = '50px';
+            img.alt = "image";
+            td.appendChild(img);
+          } else {
+            td.textContent = value;
+          }
+          tr.appendChild(td);
+        });
 
-      Object.values(product).forEach(value => {
-        const td = document.createElement('td');
-        td.textContent = value;
-        tr.appendChild(td);
+        // Add edit button
+        const editTd = document.createElement('td');
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => {
+          // Save the artwork to sessionStorage and redirect to the edit page
+          sessionStorage.setItem('editArtwork', JSON.stringify(artwork));
+          location.href = 'http://localhost:3000/HTML/editArtwork.html';
+        });
+        editTd.appendChild(editBtn);
+        tr.appendChild(editTd);
+
+        table.appendChild(tr);
       });
 
-      const actionTd = document.createElement('td');
-      const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () => {
-        // TODO: Redirect to edit page
-      });
-      actionTd.appendChild(editButton);
-      tr.appendChild(actionTd);
-
-      tbody.appendChild(tr);
-    });
-    table.appendChild(tbody);
+      document.getElementById('products').appendChild(table);
+    } else {
+      console.error(result.error);
+    }
   }
 
-  loadProducts();
+  getMyArtworks();
+
 
 </script>
 <script>
