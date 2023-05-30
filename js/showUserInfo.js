@@ -21,7 +21,10 @@ function showUserInfo() {
 
       // 使用 toLocaleDateString() 方法只显示日期部分
       let formattedDate = birthdayDate.toLocaleDateString();
-      birthdayElem.textContent = formattedDate;
+      if (formattedDate !== '1900/1/1' || formattedDate !== '1970/1/1') {
+        birthdayElem.textContent = formattedDate;
+      }
+
     })
     .catch((error) => {
       console.error('Error:', error);
