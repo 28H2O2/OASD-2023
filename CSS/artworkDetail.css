@@ -1,0 +1,30 @@
+body {
+    background-color: #F5DEB3;
+}
+
+#artworkDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#imageContainer {
+    width: 500px;
+    height: 500px;
+}
+
+#artworkImage {
+    width: 100%;
+    height: 100%;
+}
+
+#infoContainer,
+#paramContainer {
+    width: 500px;
+    margin-top: 20px;
+}
+
+p {
+    margin: 5px 0;
+}
