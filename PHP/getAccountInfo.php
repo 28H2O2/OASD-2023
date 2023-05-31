@@ -10,7 +10,7 @@ $password = "gansui";
 $conn = new mysqli($servername, $username, $password);
 $conn->select_db("oasd");
 
-$stmt = $conn->prepare('SELECT balance FROM account WHERE username = ?');
+$stmt = $conn->prepare('SELECT balance FROM user WHERE username = ?');
 $stmt->bind_param('s', $_SESSION['username']);
 $stmt->execute();
 $result = $stmt->get_result();

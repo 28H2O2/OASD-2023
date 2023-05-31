@@ -70,6 +70,9 @@ if (isset($_POST['register'])) {
 
             // 执行 SQL 语句
             if ($stmt->execute()) {
+                $stmt = $conn->prepare("UPDATE user SET balance = 0 WHERE username = ?");
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
                 echo "Registration successful."; // 注册成功
             } else {
                 echo "Error: " . $stmt->error; // 注册失败

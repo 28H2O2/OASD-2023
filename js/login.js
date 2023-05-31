@@ -138,6 +138,7 @@ window.onload = function () {
         // }
         alert(xhr.responseText);
         console.log("Registration response: ", xhr.responseText);
+        switchForm(); //切换到登录表单
 
       } else {
         // 注册失败的操作

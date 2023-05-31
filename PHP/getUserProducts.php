@@ -16,7 +16,10 @@ try {
     }
 
     $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, image FROM artwork WHERE username = ?');
-    $stmt->execute([$_SESSION['username']]);
+    $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, image FROM artwork WHERE username = ?');
+    $stmt->bind_param("s", $_SESSION['username']);
+    $stmt->execute();
+    // $stmt->execute([$_SESSION['username']]);
     $artworks = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
     // Change image filename to URL

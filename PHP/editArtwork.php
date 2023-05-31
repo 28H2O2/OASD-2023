@@ -36,18 +36,20 @@ try {
             if (move_uploaded_file($fileTmpPath, $destinationPath)) {
                 // 更新数据库记录
                 $stmt = $conn->prepare('UPDATE artwork SET name=?, author=?, description=?, year=?, genre=?, size=?, price=?, image=? WHERE id=? AND username =?');
-                $stmt->execute([
-                    $name,
-                    $author,
-                    $description,
-                    $year,
-                    $genre,
-                    $size,
-                    $price,
-                    $destinationPath,
-                    $id,
-                    $_SESSION['username'],
-                ]);
+                // $stmt->execute([
+                //     $name,
+                //     $author,
+                //     $description,
+                //     $year,
+                //     $genre,
+                //     $size,
+                //     $price,
+                //     $destinationPath,
+                //     $id,
+                //     $_SESSION['username'],
+                // ]);
+                $stmt->bind_param('sssissisis', $_POST['name'], $_POST['author'], $_POST['description'], $_POST['year'], $_POST['genre'], $_POST['size'], $_POST['price'], $destinationPath, $id, $_SESSION['username']);
+                $stmt->execute();
 
                 echo json_encode(['success' => true]);
             } else {

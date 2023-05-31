@@ -13,11 +13,11 @@ $conn->select_db("oasd");
 $data = json_decode(file_get_contents('php://input'), true);
 $amount = $data['amount'];
 
-$stmt = $conn->prepare('UPDATE account SET balance = balance + ? WHERE username = ?');
+$stmt = $conn->prepare('UPDATE user SET balance = balance + ? WHERE username = ?');
 $stmt->bind_param('ds', $amount, $_SESSION['username']);
 $stmt->execute();
 
-$stmt = $conn->prepare('SELECT balance FROM account WHERE username = ?');
+$stmt = $conn->prepare('SELECT balance FROM user WHERE username = ?');
 $stmt->bind_param('s', $_SESSION['username']);
 $stmt->execute();
 $result = $stmt->get_result();
