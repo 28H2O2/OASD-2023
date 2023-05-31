@@ -1,3 +1,16 @@
+document.getElementById('addToCartButton').addEventListener('click', async function () {
+    const response = await fetch(`http://localhost:3000/PHP/addToCart.php?id=${id}`, { method: 'POST' });
+    const result = await response.json();
+
+    if (result.success) {
+        alert('Successfully added to cart!');
+    } else {
+        console.error(result.error);
+        alert('Failed to add to cart!');
+    }
+});
+
+
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
@@ -12,7 +25,7 @@ async function getArtworkDetail() {
         document.getElementById('artworkAuthor').textContent = 'Author: ' + artwork.author;
         document.getElementById('artworkPrice').textContent = 'Price: ' + artwork.price;
         document.getElementById('artworkStatus').textContent = 'Status: ' + (artwork.status === '0' ? 'Available' : 'Sold Out');
-        document.getElementById('artworkDate').textContent = 'Date: ' + new Date(artwork.date).toLocaleDateString();
+        document.getElementById('artworkDate').textContent = 'Release Time: ' + new Date(artwork.releaseTime).toLocaleDateString();
         document.getElementById('artworkUsername').textContent = 'Publisher: ' + artwork.username;
         document.getElementById('artworkYear').textContent = 'Year: ' + artwork.year;
         document.getElementById('artworkSize').textContent = 'Size: ' + artwork.size;

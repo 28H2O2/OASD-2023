@@ -23,9 +23,11 @@ try {
             $fileTmpPath = $_FILES['image']['tmp_name'];
             $fileName = $_FILES['image']['name'];
             $destinationPath = 'image/' . $fileName;
+            $status = 0;
+            $currentDateTime = date('Y-m-d H:i:s');
 
             if (move_uploaded_file($fileTmpPath, $destinationPath)) {
-                $stmt = $conn->prepare('INSERT INTO artwork (name, author, description, year, genre, size, price, image, username, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                $stmt = $conn->prepare('INSERT INTO artwork (name, author, description, year, genre, size, price, image, username, status, releaseTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
                 // $stmt->execute([
                 //     $_POST['name'],
                 //     $_POST['author'],
@@ -37,7 +39,7 @@ try {
                 //     $destinationPath,
                 //     $_SESSION['username'],
                 // ]);
-                $stmt->bind_param('sssississ', $_POST['name'], $_POST['author'], $_POST['description'], $_POST['year'], $_POST['genre'], $_POST['size'], $_POST['price'], $destinationPath, $_SESSION['username'], 0);
+                $stmt->bind_param('sssississis', $_POST['name'], $_POST['author'], $_POST['description'], $_POST['year'], $_POST['genre'], $_POST['size'], $_POST['price'], $destinationPath, $_SESSION['username'], $status, $currentDateTime);
                 $stmt->execute();
 
                 echo json_encode(['success' => true]);
