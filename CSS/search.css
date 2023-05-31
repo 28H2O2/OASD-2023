@@ -1,0 +1,83 @@
+body {
+    background-color: #F5DEB3;
+}
+
+h1 {
+    text-align: center;
+    color: #8B4513;
+}
+
+#searchContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchBox,
+#searchType,
+#sortType {
+    width: 200px;
+    margin: 0 10px;
+}
+
+#searchButton {
+    margin-left: 10px;
+}
+
+#resultSummary {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8B4513;
+}
+
+#resultContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.resultCard {
+    margin: 10px;
+    border: 1px solid #8B4513;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    /* Animation */
+}
+
+.resultCard img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+    /* Animation */
+}
+
+.resultCard img:hover {
+    transform: scale(1.5);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.resultCard h2,
+.resultCard h3,
+.resultCard p {
+    margin: 0;
+    color: #8B4513;
+}
+
+#paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#prevButton,
+#nextButton {
+    margin: 0 20px;
+}
+
+#pageInfo {
+    color: #8B4513;
+}
