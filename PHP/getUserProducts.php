@@ -15,8 +15,8 @@ try {
         throw new Exception('No username in session');
     }
 
-    $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, image FROM artwork WHERE username = ?');
-    $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, image FROM artwork WHERE username = ?');
+    $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, status, image FROM artwork WHERE username = ?');
+    $stmt = $conn->prepare('SELECT id, name, author, description, year, genre, size, price, status, image FROM artwork WHERE username = ?');
     $stmt->bind_param("s", $_SESSION['username']);
     $stmt->execute();
     // $stmt->execute([$_SESSION['username']]);

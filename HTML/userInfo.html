@@ -162,7 +162,7 @@
       const table = document.createElement('table');
       // Add Header Row
       const headerRow = document.createElement('tr');
-      const headers = ['id', 'name', 'author', 'description', 'year', 'genre', 'size', 'price', 'image', ''];
+      const headers = ['id', 'name', 'author', 'description', 'year', 'genre', 'size', 'price', 'status', 'image', ''];
       headers.forEach((header) => {
         const th = document.createElement('th');
         th.textContent = header;
@@ -183,6 +183,15 @@
             img.style.width = '50px';
             img.alt = "image";
             td.appendChild(img);
+          } else if (index === Object.values(artwork).length - 2) {
+            // This is the status column, add an if-else statement to display "unsold" or "sold"
+            if (value == 0) {
+              td.textContent = "unsold";
+              td.style.color = "blue";
+            } else if (value == 1) {
+              td.textContent = "sold out";
+              td.style.color = "red";
+            }
           } else {
             td.textContent = value;
           }
@@ -211,8 +220,6 @@
   }
 
   getMyArtworks();
-
-
 </script>
 <script>
   // 加载页面时调用
