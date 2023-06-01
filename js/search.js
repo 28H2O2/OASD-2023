@@ -88,7 +88,17 @@ function displayResults(artworks) {
         price.textContent = 'Price: ' + artwork.price;
         card.appendChild(price);
 
+        let visited = document.createElement('p');
+        visited.textContent = 'Visited: ' + artwork.visited;
+        card.appendChild(visited);
+
         card.addEventListener('click', function () {
+            // Send a request to increase the visit count
+            fetch('/PHP/increaseVisited.php', {
+                method: 'POST',
+                body: JSON.stringify({ artworkId: artwork.id })
+            });
+            // Open the artwork detail page
             window.location.href = 'artworkDetail.html?id=' + artwork.id;
         });
 

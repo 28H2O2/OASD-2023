@@ -9,8 +9,8 @@ $password = "gansui";
 $conn = new mysqli($servername, $username, $password);
 $conn->select_db("oasd");
 
-// $id = $_GET['id'];
-$id = 1; // for test
+$id = $_GET['id'];
+// $id = 1; // for test
 
 try {
     $stmt = $conn->prepare('SELECT * FROM artwork WHERE id = ?');

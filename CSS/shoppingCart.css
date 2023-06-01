@@ -1,0 +1,37 @@
+#cartContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.cartItem {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.cartItem img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cartItem .name {
+    flex-grow: 1;
+}
+
+.cartItem .price {
+    margin-right: 10px;
+}
+
+#checkoutButton {
+    width: 100px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #F5DEB3;
+    border: none;
+    cursor: pointer;
+}
+
+#checkoutButton:hover {
+    background-color: #DEB887;
+}

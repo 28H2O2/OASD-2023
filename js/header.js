@@ -7,6 +7,7 @@ function loadHeader() {
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="index.html">Home</a></li>
+        <li><span id="search"><a href="search.html">Search</a></span></li>
         <li><span id="issue"><a href="issue.html">Issue</a></span></li>
         <li><span id="shoppingCart"><a href="shoppingCart.html">ShoppingCart</a></span></li>
         <li ><span id="loginButton"><a href="login.html">Login</a></span></li>
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('logoutButton').style.display = "none";
         document.getElementById('shoppingCart').style.display = "none";
         document.getElementById('issue').style.display = "none";
+        document.getElementById('search').style.display = "none";
       } else {  //* 如果已经登录，则隐藏登录按钮，显示用户名
         document.getElementById('loginButton').style.display = "none";
         document.getElementById('logoutButton').style.display = "inline";
