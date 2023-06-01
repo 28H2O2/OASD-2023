@@ -1,5 +1,6 @@
 let artworks = [];
 let currentArtworkIndex = 0;
+let timer = null;
 
 function loadNewestArtworks() {
     fetch('http://localhost:3000/PHP/newestArtworks.php')
@@ -7,6 +8,7 @@ function loadNewestArtworks() {
         .then(data => {
             artworks = data;
             displayArtwork();
+            startAutoSlide();
         })
         .catch(error => console.error('Error:', error));
 }
@@ -30,13 +32,21 @@ function displayArtwork() {
     carousel.appendChild(author);
 
     let price = document.createElement('p');
-    price.textContent = artwork.price;
+    price.textContent = '$' + artwork.price;
     carousel.appendChild(price);
 
     carousel.onclick = () => {
-        window.location.href = 'artworkDetail.html?id=' + artwork.artworkId;
-        incrementVisited(artwork.artworkId);
+        window.location.href = 'artworkDetail.html?id=' + artwork.id;
+        incrementVisited(artwork.id);
     };
+}
+
+function startAutoSlide() {
+    timer = setInterval(nextArtwork, 3000); // Change slide every 3 seconds
+}
+
+function stopAutoSlide() {
+    clearInterval(timer);
 }
 
 function incrementVisited(artworkId) {
@@ -51,11 +61,21 @@ function incrementVisited(artworkId) {
 }
 
 function prevArtwork() {
-    currentArtworkIndex = (currentArtworkIndex - 1 + artworks.length) % artworks.length;
+    stopAutoSlide();
+    currentArtworkIndex--;
+    if (currentArtworkIndex < 0) {
+        currentArtworkIndex = artworks.length - 1;
+    }
     displayArtwork();
+    startAutoSlide();
 }
 
 function nextArtwork() {
-    currentArtworkIndex = (currentArtworkIndex + 1) % artworks.length;
+    stopAutoSlide();
+    currentArtworkIndex++;
+    if (currentArtworkIndex >= artworks.length) {
+        currentArtworkIndex = 0;
+    }
     displayArtwork();
+    startAutoSlide();
 }
