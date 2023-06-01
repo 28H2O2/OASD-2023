@@ -5,21 +5,26 @@
   <title>Art Gallery</title>
   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="../CSS/global.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/shoppingCart.css">
   <style>
     body {
       margin: 0;
+      min-height: 80vh;
     }
   </style>
 </head>
 
 <body>
   <header id="header"></header>
-  <div id="cart" class="page">
-    <h1>My Cart</h1>
-    <div id="cartContainer"></div>
-    <button id="checkoutButton">Checkout</button>
-    <script src="../js/shoppingCart.js"></script>
-  </div>
+  <main>
+    <div id="cart" class="page">
+      <h1>My Cart</h1>
+      <div id="cartContainer"></div>
+      <div id="total"></div>
+      <button id="checkoutButton">Checkout</button>
+      <script src="../js/shoppingCart.js"></script>
+    </div>
+  </main>
   <footer id="footer"></footer>
 </body>
 
@@ -27,6 +32,7 @@
 <script>
   window.onload = function () {
     loadHeader();
+    fetchCartItems();
   }
 </script>
 

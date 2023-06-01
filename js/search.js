@@ -64,6 +64,7 @@ function displayResults(artworks) {
     }
 
     for (let artwork of artworks) {
+
         let card = document.createElement('div');
         card.className = 'resultCard';
 
@@ -92,9 +93,16 @@ function displayResults(artworks) {
         visited.textContent = 'Visited: ' + artwork.visited;
         card.appendChild(visited);
 
+        if (artwork.status == 1) {  // 如果商品已售出，则显示Sold Out
+            let status = document.createElement('p');
+            status.textContent = 'Sold Out';
+            status.style.color = 'red';
+            card.appendChild(status);
+        }
+
         card.addEventListener('click', function () {
             // Send a request to increase the visit count
-            fetch('/PHP/increaseVisited.php', {
+            fetch('http://localhost:3000/PHP/increaseVisited.php', {
                 method: 'POST',
                 body: JSON.stringify({ artworkId: artwork.id })
             });
