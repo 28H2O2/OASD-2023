@@ -89,9 +89,9 @@ elseif (isset($_POST['login'])) {
     $captcha = $_POST['captcha'];
     // 检查验证码是否正确
     if ($captcha != $_SESSION['captcha']) {
-        echo $captcha;
-        echo "<br>";
-        echo $_SESSION['captcha'];
+        // echo $captcha;
+        // echo "<br>";
+        // echo $_SESSION['captcha'];
         echo "Invalid captcha.";
         exit();
     }

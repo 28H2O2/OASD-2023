@@ -37,7 +37,7 @@ async function getArtworkDetail() {
         thisId = artwork.id;
         document.getElementById('artworkName').textContent = artwork.name;
         document.getElementById('artworkAuthor').textContent = 'Author: ' + artwork.author;
-        document.getElementById('artworkPrice').textContent = 'Price: ' + artwork.price;
+        document.getElementById('artworkPrice').textContent = 'Price: $' + artwork.price;
         document.getElementById('artworkStatus').textContent = 'Status: ' + (artwork.status === '0' ? 'Available' : 'Sold Out');
         document.getElementById('artworkDate').textContent = 'Release Time: ' + new Date(artwork.releaseTime).toLocaleDateString();
         document.getElementById('artworkUsername').textContent = 'Publisher: ' + artwork.username;
