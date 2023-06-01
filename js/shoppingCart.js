@@ -91,6 +91,7 @@ document.getElementById('checkoutButton').onclick = function () {
         alert('Checkout successful!');
         // Clear the cart
         document.getElementById('cartContainer').innerHTML = '';
+        displayCartItems([]);
       } else {
         alert('Checkout failed: ' + result.message);
       }
