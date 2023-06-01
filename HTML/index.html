@@ -5,7 +5,7 @@
   <title>Art Gallery</title>
   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" type="text/css" href="../CSS/global.css">
-  <!-- <link rel="stylesheet" type="text/css" href="../CSS/header.css"> -->
+  <link rel="stylesheet" type="text/css" href="../CSS/index.css">
   <style>
     body {
       margin: 0;
@@ -23,6 +23,11 @@
   <main>
     <h1>Welcome to Art Gallery</h1>
 
+    <div id="artworkCarousel">
+    </div>
+    <button id="prevButton" onclick="prevArtwork()">Prev</button>
+    <button id="nextButton" onclick="nextArtwork()">Next</button>
+    <script src="../js/index.js"></script>
   </main>
 
   <footer id="footer">
@@ -32,6 +37,7 @@
   <script>
     window.onload = function () {
       loadHeader();
+      loadNewestArtworks()
     }
   </script>
 </body>

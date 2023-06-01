@@ -1,0 +1,19 @@
+body {
+    /* padding: 2em; */
+    background-color: #f5f5f5;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+}
+
+.carousel-item {
+    cursor: pointer;
+    height: 400px;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+}
