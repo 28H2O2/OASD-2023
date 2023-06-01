@@ -39,9 +39,10 @@ try {
         throw new Exception('Artwork is already in the cart');
     }
 
+    $status = 0;
     // Add the artwork to the cart
-    $stmt = $conn->prepare('INSERT INTO shoppingCart (username, artworkId) VALUES (?, ?)');
-    $stmt->bind_param('si', $username, $artworkId);
+    $stmt = $conn->prepare('INSERT INTO shoppingCart (username, artworkId, status) VALUES (?, ?, ?)');
+    $stmt->bind_param('sis', $username, $artworkId, $status);
     $stmt->execute();
 
     echo json_encode(['success' => true]);
