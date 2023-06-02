@@ -1,23 +1,32 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
-header("Access-Control-Allow-Headers: *");
-// // Fetch the request data
-// $data = json_decode(file_get_contents('php://input'), true);
-// $artworkId = $data['artworkId'];
-// Fetch the request data
-$artworkId = $_POST['artworkId'];
+header("Content-Type: application/json; charset=UTF-8");
+
+// 定义数据库连接信息
+$servername = "localhost:3306";
+$username = "root";
+$password = "gansui";
+$dbname = "oasd";
+
+// 创建数据库连接
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 try {
-    $conn = new PDO("mysql:host=localhost:3306;dbname=oasd", 'root', 'gansui');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // if (!isset($_SESSION['username'])) {
+    //     throw new Exception('No username in session');
+    // }
 
-    // Increase the visit count
-    $stmt = $conn->prepare('UPDATE artwork SET visited = visited + 1 WHERE id = :id');
-    $stmt->execute([':id' => $artworkId]);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $artworkId = $_POST['artworkId'];
 
-} catch (PDOException $e) {
+        // Increase the visit count
+        $stmt = $conn->prepare('UPDATE artwork SET visited = visited + 1 WHERE id = ?');
+        $stmt->bind_param('i', $artworkId);
+        $stmt->execute();
+    }
+} catch (Exception $e) {
     echo 'Error: ' . $e->getMessage();
 }
 
-$conn = null;
+$conn->close();

@@ -105,9 +105,11 @@ function displayResults(artworks) {
             fetch('http://localhost:3000/PHP/increaseVisited.php', {
                 method: 'POST',
                 body: JSON.stringify({ artworkId: artwork.id })
+            }).then(() => {
+                // Open the artwork detail page
+                window.location.href = 'artworkDetail.html?id=' + artwork.id;
             });
-            // Open the artwork detail page
-            window.location.href = 'artworkDetail.html?id=' + artwork.id;
+
         });
 
         container.appendChild(card);

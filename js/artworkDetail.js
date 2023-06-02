@@ -35,6 +35,14 @@ async function getArtworkDetail() {
         document.getElementById('artworkImage').src = 'http://localhost:3000/PHP/' + artwork.image;
         // document.getElementByTd('artworkId').textContent = 'ID: ' + artwork.id; //这个不展示在页面上
         thisId = artwork.id;
+
+        const formData = new FormData();
+        formData.append('artworkId', thisId);
+
+        fetch('http://localhost:3000/PHP/increaseVisited.php', {
+            method: 'POST',
+            body: formData
+        });
         document.getElementById('artworkName').textContent = artwork.name;
         document.getElementById('artworkAuthor').textContent = 'Author: ' + artwork.author;
         document.getElementById('artworkPrice').textContent = 'Price: $' + artwork.price;

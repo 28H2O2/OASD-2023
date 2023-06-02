@@ -31,9 +31,6 @@ function loadHeader() {
       <p>&copy; 2023 HCY. All Rights Reserved.</p>        
     </div>   
   `;
-};
-// 加载用户名
-document.addEventListener('DOMContentLoaded', function () {
   // 创建 XMLHttpRequest 对象
   var xhr = new XMLHttpRequest();
 
@@ -45,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (xhr.status === 200) {
       // 将用户名存储在 span 元素中
       if (xhr.responseText == '') {
-        document.getElementById('username').textContent = "未登录";
+        // document.getElementById('username').textContent = "未登录";
         document.getElementById('dropdown').style.display = "none";
         document.getElementById('loginButton').style.display = "inline";
         document.getElementById('logoutButton').style.display = "none";
@@ -65,6 +62,41 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // 发送 AJAX 请求
   xhr.send();
+
+};
+// 加载用户名
+document.addEventListener('DOMContentLoaded', function () {
+  // // 创建 XMLHttpRequest 对象
+  // var xhr = new XMLHttpRequest();
+
+  // // 设置请求的 URL 和方法
+  // xhr.open('GET', 'http://localhost:3000/PHP/getUsername.php');
+
+  // // 设置请求完成后的回调函数
+  // xhr.onload = function () {
+  //   if (xhr.status === 200) {
+  //     // 将用户名存储在 span 元素中
+  //     if (xhr.responseText == '') {
+  //       // document.getElementById('username').textContent = "未登录";
+  //       document.getElementById('dropdown').style.display = "none";
+  //       document.getElementById('loginButton').style.display = "inline";
+  //       document.getElementById('logoutButton').style.display = "none";
+  //       document.getElementById('shoppingCart').style.display = "none";
+  //       document.getElementById('issue').style.display = "none";
+  //       document.getElementById('search').style.display = "none";
+  //     } else {  //* 如果已经登录，则隐藏登录按钮，显示用户名
+  //       document.getElementById('loginButton').style.display = "none";
+  //       document.getElementById('logoutButton').style.display = "inline";
+  //       var username = document.getElementById('username')
+  //       username.style.display = "inline";
+  //       username.textContent = xhr.responseText;
+
+  //       // document.getElementById('username').textContent = xhr.responseText;
+  //     }
+  //   };
+  // }
+  // // 发送 AJAX 请求
+  // xhr.send();
 });
 
 // 处理logout按钮
