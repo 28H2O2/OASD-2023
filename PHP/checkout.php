@@ -42,8 +42,10 @@ try {
     $stmt = $conn->prepare('UPDATE user SET balance = balance + :totalPrice WHERE username = :username');
     $stmt->execute([':username' => $sellerUsername, ':totalPrice' => $totalPrice]);
 
-    // 清空购物车
-    $stmt = $conn->prepare('DELETE FROM shoppingCart WHERE username = :username');
+    // // 清空购物车
+    // $stmt = $conn->prepare('DELETE FROM shoppingCart WHERE username = :username');
+    // $stmt->execute([':username' => $username]);
+    $stmt = $conn->prepare('UPDATE shoppingCart SET status = 1 WHERE username = :username');
     $stmt->execute([':username' => $username]);
 
     $conn->commit(); // 提交事务

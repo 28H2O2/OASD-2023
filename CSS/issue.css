@@ -4,6 +4,8 @@ main {
   margin: auto;
   padding: 20px;
   border-radius: 10px;
+  min-height: 80vh;
+  margin-top: 10px;
 }
 
 label {

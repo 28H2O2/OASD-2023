@@ -1,6 +1,7 @@
 let artworks = [];
 let currentArtworkIndex = 0;
 let timer = null;
+let jumpURL = '';
 
 function loadNewestArtworks() {
     fetch('http://localhost:3000/PHP/newestArtworks.php')
@@ -36,8 +37,10 @@ function displayArtwork() {
     carousel.appendChild(price);
 
     carousel.onclick = () => {
-        window.location.href = 'artworkDetail.html?id=' + artwork.id;
         incrementVisited(artwork.id);
+        jumpURL = 'artworkDetail.html?id=' + artwork.id;
+        // window.location.href = 'artworkDetail.html?id=' + artwork.id;
+
     };
 }
 
@@ -50,12 +53,14 @@ function stopAutoSlide() {
 }
 
 function incrementVisited(artworkId) {
-    fetch('http://localhost:3000/PHP/incrementVisited.php', {
+    fetch('http://localhost:3000/PHP/increaseVisited.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: 'id=' + artworkId
+    }).then(() => {
+        window.location.href = jumpURL;
     })
         .catch(error => console.error('Error:', error));
 }

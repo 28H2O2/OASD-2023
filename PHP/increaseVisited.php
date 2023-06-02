@@ -1,7 +1,12 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
+header("Access-Control-Allow-Headers: *");
+// // Fetch the request data
+// $data = json_decode(file_get_contents('php://input'), true);
+// $artworkId = $data['artworkId'];
 // Fetch the request data
-$data = json_decode(file_get_contents('php://input'), true);
-$artworkId = $data['artworkId'];
+$artworkId = $_POST['artworkId'];
 
 try {
     $conn = new PDO("mysql:host=localhost:3306;dbname=oasd", 'root', 'gansui');
