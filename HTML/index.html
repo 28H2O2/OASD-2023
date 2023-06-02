@@ -10,6 +10,12 @@
     body {
       margin: 0;
     }
+
+    #guess {
+      margin-top: 50px;
+      text-align: center;
+      color: rgb(53, 17, 61)
+    }
   </style>
 </head>
 
@@ -36,6 +42,10 @@
       <button id="nextButton" onclick="nextArtwork()">Next</button>
     </div>
     <script src="../js/index.js"></script>
+    <h2 id="guess">Guess you like</h2>
+    <div id="topArtworks">
+
+    </div>
   </main>
 
   <footer id="footer">
@@ -46,6 +56,7 @@
     window.onload = function () {
       loadHeader();
       loadNewestArtworks()
+      getTopArtworks();
     }
   </script>
 </body>

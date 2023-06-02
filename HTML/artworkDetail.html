@@ -7,6 +7,28 @@
   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
   <link rel="stylesheet" href="../CSS/global.css">
   <link rel="stylesheet" href="../CSS/artworkDetail.css">
+  <style>
+    /* Container needs relative position so the magnifier glass can be correctly positioned within it */
+    #imageContainer {
+      position: relative;
+    }
+
+    /* The magnifier glass does not show up without a background */
+    .magnify-glass {
+      position: absolute;
+      border: 1px solid #000;
+      border-radius: 50%;
+      cursor: none;
+      /* Set the size of the magnifier glass */
+      width: 200px;
+      height: 200px;
+      /* Set the background properties for the magnifier glass */
+      background: rgba(0, 0, 0, 0.1);
+      background-repeat: no-repeat;
+      background-size: auto 200%;
+      pointer-events: none;
+    }
+  </style>
 
 </head>
 
@@ -42,11 +64,39 @@
   <footer id="footer"></footer>
 
 </body>
+<script>
+  function loadImgMagnify() {
+    var img = document.getElementById("artworkImage");
+    var container = img.parentElement;
+    var magnifier = document.createElement("div");
+    magnifier.className = 'magnify-glass';
+    container.appendChild(magnifier);
+
+    container.addEventListener("mousemove", function (e) {
+      var rect = img.getBoundingClientRect();
+      var scaleX = img.naturalWidth / rect.width * 2;
+      var scaleY = img.naturalHeight / rect.height * 2;
+
+      var cx = (e.pageX - rect.left) * scaleX - magnifier.offsetWidth / 2;
+      var cy = (e.pageY - rect.top) * scaleY - magnifier.offsetHeight / 2;
+
+      magnifier.style.left = e.pageX - container.offsetLeft - magnifier.offsetWidth / 2 + 'px';
+      magnifier.style.top = e.pageY - container.offsetTop - magnifier.offsetHeight / 2 + 'px';
+      magnifier.style.backgroundPosition = "-" + cx + "px -" + cy + "px";
+    });
+
+    img.onload = function () {
+      magnifier.style.backgroundImage = "url('" + img.src + "')";
+    }
+  }
+
+</script>
 <script src="../js/artworkDetail.js"></script>
 <script src="../js/header.js"></script>
 <script>
   window.onload = function () {
     loadHeader();
+    loadImgMagnify();
   }
 </script>
 

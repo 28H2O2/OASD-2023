@@ -15,6 +15,9 @@ function displayCartItems(items) {
   for (let item of items) {
     let cartItem = document.createElement('div');
     cartItem.className = 'cartItem';
+    if (item.status == 2) {
+      continue;
+    }
     let cartItemClickHandler = () => {
       // Send a request to increase the visit count
       fetch('http://localhost:3000/PHP/increaseVisited.php', {
@@ -69,7 +72,7 @@ function displayCartItems(items) {
     cartItem.appendChild(removeButton);
 
     container.appendChild(cartItem);
-    if (item.status == 1) {
+    if (item.status == 1 || item.status == 2) {
       continue; // Skip the sold out items
     }
     totalPrice += parseInt(item.price);

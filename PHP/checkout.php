@@ -45,8 +45,22 @@ try {
     // // 清空购物车
     // $stmt = $conn->prepare('DELETE FROM shoppingCart WHERE username = :username');
     // $stmt->execute([':username' => $username]);
-    $stmt = $conn->prepare('UPDATE shoppingCart SET status = 1 WHERE username = :username');
+    // $stmt = $conn->prepare('UPDATE shoppingCart SET status = 2 WHERE username = :username');
+    // $stmt->execute([':username' => $username]);
+
+    // // 更新购物车中所有艺术品的状态为已售出，如果艺术品的状态为0并且购买者的用户名与当前用户名不同，则将该艺术品的状态设置为1
+    // $stmt = $conn->prepare('UPDATE shoppingCart SET status = CASE WHEN username = :username THEN 2 ELSE 1 END WHERE artworkId IN (SELECT artworkId FROM shoppingCart WHERE username = :username)');
+    // $stmt->execute([':username' => $username]);
+
+    // 更新购物车中所有艺术品的状态为已售出，如果艺术品的状态为0并且购买者的用户名与当前用户名不同，则将该艺术品的状态设置为1
+    $stmt = $conn->prepare('CREATE TEMPORARY TABLE temp_cart SELECT artworkId, username FROM shoppingCart WHERE username = :username');
     $stmt->execute([':username' => $username]);
+
+    $stmt = $conn->prepare('UPDATE shoppingCart SET status = CASE WHEN username = :username THEN 2 ELSE 1 END WHERE artworkId IN (SELECT artworkId FROM temp_cart)');
+    $stmt->execute([':username' => $username]);
+
+    $stmt = $conn->prepare('DROP TEMPORARY TABLE temp_cart');
+    $stmt->execute();
 
     $conn->commit(); // 提交事务
 

@@ -29,17 +29,7 @@ try {
 
             if (move_uploaded_file($fileTmpPath, $destinationPath)) {
                 $stmt = $conn->prepare('INSERT INTO artwork (name, author, description, year, genre, size, price, image, username, status, releaseTime, visited) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-                // $stmt->execute([
-                //     $_POST['name'],
-                //     $_POST['author'],
-                //     $_POST['description'],
-                //     $_POST['year'],
-                //     $_POST['genre'],
-                //     $_POST['size'],
-                //     $_POST['price'],
-                //     $destinationPath,
-                //     $_SESSION['username'],
-                // ]);
+
                 $stmt->bind_param('sssississisi', $_POST['name'], $_POST['author'], $_POST['description'], $_POST['year'], $_POST['genre'], $_POST['size'], $_POST['price'], $destinationPath, $_SESSION['username'], $status, $currentDateTime, $visited);
                 $stmt->execute();
 
