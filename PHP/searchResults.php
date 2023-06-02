@@ -20,17 +20,29 @@ $sortOrder = 'ASC';
 
 if ($_GET['sort']) {
     switch ($_GET['sort']) {
-        case 'priceAsc':$sortField = 'price';
+        case 'priceAsc':
+            $sortField = 'price';
             $sortOrder = 'ASC';
             break;
-        case 'priceDesc':$sortField = 'price';
+        case 'priceDesc':
+            $sortField = 'price';
             $sortOrder = 'DESC';
             break;
-        case 'yearAsc':$sortField = 'year';
+        case 'yearAsc':
+            $sortField = 'year';
             $sortOrder = 'ASC';
             break;
-        case 'yearDesc':$sortField = 'year';
+        case 'yearDesc':
+            $sortField = 'year';
             $sortOrder = 'DESC';
+            break;
+        case 'visitedDesc':
+            $sortField = 'visited';
+            $sortOrder = 'DESC';
+            break;
+        case 'nameAsc':
+            $sortField = 'name';
+            $sortOrder = 'ASC';
             break;
     }
 }

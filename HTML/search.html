@@ -2,51 +2,53 @@
 <html lang="zh">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Search</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../CSS/global.css">
-    <link rel="stylesheet" href="../CSS/search.css">
+	<meta charset="UTF-8">
+	<title>Search</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+	<link rel="stylesheet" href="../CSS/global.css">
+	<link rel="stylesheet" href="../CSS/search.css">
 </head>
 
 <body>
-    <header id="header"></header>
+	<header id="header"></header>
 
-    <main>
-        <h1>Search</h1>
-        <div id="searchContainer">
-            <input type="text" id="searchBox" placeholder="Search by Name or Author">
-            <select id="searchType">
-                <option value="name">By Name</option>
-                <option value="author">By Author</option>
-            </select>
-            <select id="sortType">
-                <option value="">Sort by</option>
-                <option value="priceAsc">Price: Low to High</option>
-                <option value="priceDesc">Price: High to Low</option>
-                <option value="yearAsc">Year: Old to New</option>
-                <option value="yearDesc">Year: New to Old</option>
-            </select>
-            <button id="searchButton">Search</button>
-        </div>
-        <div id="resultSummary"></div>
-        <div id="resultContainer"></div>
-        <div id="paginationContainer">
-            <button id="prevButton">Previous</button>
-            <div id="pageInfo"></div>
-            <button id="nextButton">Next</button>
-        </div>
-        <script src="../js/search.js"></script>
-    </main>
-    <footer id="footer"></footer>
+	<main>
+		<h1>Search</h1>
+		<div id="searchContainer">
+			<input type="text" id="searchBox" placeholder="Search by Name or Author">
+			<select id="searchType">
+				<option value="name">By Name</option>
+				<option value="author">By Author</option>
+			</select>
+			<select id="sortType">
+				<option value="">Sort by</option>
+				<option value="priceAsc">Price: Low to High</option>
+				<option value="priceDesc">Price: High to Low</option>
+				<option value="yearAsc">Year: Old to New</option>
+				<option value="yearDesc">Year: New to Old</option>
+				<option value="visitedDesc">Visited: High to Low</option>
+				<option value="nameAsc">Name: Alphabetical</option>
+			</select>
+			<button id="searchButton">Search</button>
+		</div>
+		<div id="resultSummary"></div>
+		<div id="resultContainer"></div>
+		<div id="paginationContainer">
+			<button id="prevButton">Previous</button>
+			<div id="pageInfo"></div>
+			<button id="nextButton">Next</button>
+		</div>
+		<script src="../js/search.js"></script>
+	</main>
+	<footer id="footer"></footer>
 
 </body>
 <script src="../js/header.js"></script>
 <script>
-    window.onload = function () {
-        loadHeader();
-        fetchResults(); // load all artworks
-    }
+	window.onload = function () {
+		loadHeader();
+		fetchResults(); // load all artworks
+	}
 </script>
 
 </html>

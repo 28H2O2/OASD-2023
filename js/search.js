@@ -86,7 +86,7 @@ function displayResults(artworks) {
         card.appendChild(year);
 
         let price = document.createElement('p');
-        price.textContent = 'Price: ' + artwork.price;
+        price.textContent = 'Price: $' + artwork.price;
         card.appendChild(price);
 
         let visited = document.createElement('p');
