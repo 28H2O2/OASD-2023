@@ -28,6 +28,28 @@
       background-size: auto 200%;
       pointer-events: none;
     }
+
+    #commentContainer {
+      margin-top: 20px;
+    }
+
+    #comments {
+      margin-top: 10px;
+    }
+
+    .comment {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .deletedComment {
+      opacity: 0.5;
+    }
+
+    .replies {
+      margin-left: 20px;
+      /* 或者你喜欢的任何其他值 */
+    }
   </style>
 
 </head>
@@ -54,6 +76,15 @@
         <p id="artworkGenre"></p>
         <p id="artworkDescription"></p>
       </div>
+      <div id="commentContainer">
+        <form id="commentForm">
+          <input type="text" name="comment" placeholder="Add a comment...">
+          <button>Post Comment</button>
+        </form>
+        <div id="comments"> </div>
+      </div>
+
+
 
     </section>
     <div id="actionContainer">
@@ -91,6 +122,7 @@
   }
 
 </script>
+<script src="../js/comment.js"></script>
 <script src="../js/artworkDetail.js"></script>
 <script src="../js/header.js"></script>
 <script>
