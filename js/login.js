@@ -20,7 +20,7 @@ function switchForm() {
 // 手机号码检测
 function checkPhoneNumber() {
   var phoneNumber = document.getElementById("phone").value;
-  if (phoneNumber.length !== 11) {
+  if (phoneNumber.length !== 11 && phoneNumber.length !== 0) {
     alert("Please enter a valid 11-digit phone number.");
     return false;
   }
@@ -29,7 +29,7 @@ function checkPhoneNumber() {
 // 提交时检测手机号码
 function validatePhoneNumber() {
   var phoneNumber = document.getElementById("phone").value;
-  if (phoneNumber.length !== 11) {
+  if (phoneNumber.length !== 11 && phoneNumber.length !== 0) {
     alert("Please enter a valid 11-digit phone number.");
     return false;
   }
@@ -84,10 +84,14 @@ function calculatePasswordStrength(password) {
 }
 // 监听密码输入框的输入事件
 passwordInput.addEventListener('input', updatePasswordStrength);
+
+let buttonClicked = false; // 按钮是否被点击
+const threshold = 3000; // 阈值为3秒
 // 登录和注册表单的提交
 window.onload = function () {
   var loginForm = document.getElementById('loginForm');
   var registerForm = document.getElementById('registerForm');
+
   // 登录表单的提交
   loginForm.onsubmit = function (e) {
     e.preventDefault();
@@ -118,6 +122,10 @@ window.onload = function () {
   // 注册表单的提交
   registerForm.onsubmit = function (e) {
     e.preventDefault();
+    if (validatePhoneNumber() == false) {
+      console.log("Phone number is valid.");
+      return;
+    }
 
     var xhr = new XMLHttpRequest();
     var formData = new FormData(registerForm);
@@ -138,7 +146,10 @@ window.onload = function () {
         // }
         alert(xhr.responseText);
         console.log("Registration response: ", xhr.responseText);
-        switchForm(); //切换到登录表单
+        if (xhr.responseText === "Registration successful.") {
+          switchForm(); //切换到登录表单          
+        }
+
 
       } else {
         // 注册失败的操作
@@ -148,3 +159,49 @@ window.onload = function () {
     xhr.send(formData);
   };
 };
+
+
+const loginButton = document.querySelector('.post-button');
+
+loginButton.addEventListener('click', () => {
+  console.log('aaaaa')
+  if (buttonClicked) {
+    // 用户过快地点击按钮
+    loginButton.disabled = true;
+    alert('Please do not click the button too quickly');
+  } else {
+    buttonClicked = true;
+    // 发送注册或登录请求
+  }
+});
+
+// 在一定时间后重置按钮状态
+const resetButton = () => {
+  buttonClicked = false;
+  loginButton.disabled = false;
+  loginButton.disabled = false;
+};
+
+setInterval(resetButton, threshold);
+
+const registerButton = document.querySelector('#post-button');
+
+registerButton.addEventListener('click', () => {
+  console.log('aaaaa')
+  if (buttonClicked) {
+    // 用户过快地点击按钮
+    registerButton.disabled = true;
+    alert('Please do not click the button too quickly');
+  } else {
+    buttonClicked = true;
+    // 发送注册或登录请求
+  }
+});
+
+// // 在一定时间后重置按钮状态
+// const resetButton = () => {
+//   buttonClicked = false;
+//   loginButton.disabled = false;
+// };
+
+setInterval(resetButton, threshold);

@@ -101,6 +101,7 @@
     var container = img.parentElement;
     var magnifier = document.createElement("div");
     magnifier.className = 'magnify-glass';
+    magnifier.style.display = 'none'; // Hide the magnifier initially
     container.appendChild(magnifier);
 
     container.addEventListener("mousemove", function (e) {
@@ -114,6 +115,11 @@
       magnifier.style.left = e.pageX - container.offsetLeft - magnifier.offsetWidth / 2 + 'px';
       magnifier.style.top = e.pageY - container.offsetTop - magnifier.offsetHeight / 2 + 'px';
       magnifier.style.backgroundPosition = "-" + cx + "px -" + cy + "px";
+      magnifier.style.display = 'block'; // Show the magnifier on mousemove
+    });
+
+    container.addEventListener("mouseleave", function (e) {
+      magnifier.style.display = 'none'; // Hide the magnifier on mouseleave
     });
 
     img.onload = function () {

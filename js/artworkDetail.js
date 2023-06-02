@@ -232,6 +232,7 @@ function renderCommentTree(comments, containerElem) {
     // 渲染子评论
     let repliesContainer = document.createElement('div');
     repliesContainer.className = 'replies';
+    document.getElementsByClassName('replies').style = "margin-left: 20px;";
     commentElem.appendChild(repliesContainer);
     renderCommentTree(comment.replies, repliesContainer);
 

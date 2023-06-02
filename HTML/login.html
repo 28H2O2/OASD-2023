@@ -29,7 +29,7 @@
 		<label for="captcha">Captcha:</label>
 		<input type="text" id="captcha" name="captcha" placeholder="Please input captcha" required>
 		<img src="http://localhost:3000/PHP/captcha.php" alt="captcha" id="captchaImage">
-		<input type="submit" value="Login" name="login">
+		<input type="submit" value="Login" name="login" class="post-button">
 		<input type="button" id="switchButton" class="register-button" value="Register" onclick="switchForm()">
 	</form>
 	<form id="registerForm" onsubmit="return validatePhoneNumber()" method="post" style="display: none;">
@@ -97,7 +97,7 @@
 		<input type="text" id="captcha" name="captcha" placeholder="Please input captcha" required>
 		<img src="http://localhost:3000/PHP/captcha.php" alt="captcha" id="captchaImage">
 		<input type="button" id="switchButton" class="back-button" value="Back" onclick="switchForm()">
-		<input type="submit" value="Register" class="register-button" name="register">
+		<input type="submit" value="Register" class="register-button" name="register" id="post-button">
 	</form>
 	<!-- <button class="button" onclick="switchForm()">Register</button> -->
 </body>
