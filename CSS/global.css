@@ -6,7 +6,7 @@
   font-style: medium;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
+* {
+  font-family: 'Montserrat Thin', sans-serif;
   /* 使用 Montserrat 字体 */
 }

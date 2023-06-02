@@ -36,26 +36,41 @@ const editEvent = document.querySelector('#edit-button');
 
 editEvent.addEventListener('click', async (event) => {
   event.preventDefault();
-  let form = document.getElementById('registerForm');
+  let form = document.getElementById('editForm');
   const formData = new FormData(form);
 
   const response = await fetch('http://localhost:3000/PHP/editUserInfo.php', {
     method: 'POST',
     body: formData
+  }).then(() => {
+    alert('Edit successful');
+    // location.reload();
+
+    // const result = response.json();
+    // alert(result)
+    // if (result.success) {
+    //   // document.getElementById('preview').src = URL.createObjectURL(form.image.files[0]);
+    //   alert('Edit successful');
+    // } else {
+    //   console.error(result.error);
+    // }
   });
 
-  const result = await response.json();
-  alert(result)
-  if (result.success) {
-    // document.getElementById('preview').src = URL.createObjectURL(form.image.files[0]);
-    alert('Edit successful');
-  } else {
-    console.error(result.error);
-  }
+
 });
 
 // 提交时检测手机号码
 function validatePhoneNumber() {
+  var phoneNumber = document.getElementById("phone").value;
+  if (phoneNumber.length !== 11) {
+    alert("Please enter a valid 11-digit phone number.");
+    return false;
+  }
+  return true;
+}
+
+// 手机号码检测
+function checkPhoneNumber() {
   var phoneNumber = document.getElementById("phone").value;
   if (phoneNumber.length !== 11) {
     alert("Please enter a valid 11-digit phone number.");

@@ -10,7 +10,15 @@
 </head>
 
 <body>
-	<!-- <iframe src="audioPlayer.html" frameborder="0" width="0" height="0"></iframe> -->
+	<!-- <iframe src="audioPlayer.html" frameborder="0" width="0" height="0"></iframe>
+	<script>
+		let bgm = document.getElementById('bgm');
+		bgm.play();  // 播放背景音乐
+
+		// 页面跳转后
+		let bgm = parent.document.getElementById('bgm'); // 获取父页中的audio
+		bgm.play();  // 继续播放,而不重新播放
+	</script> -->
 	<form id="loginForm" method="post">
 		<h1>Login</h1>
 		<label for="username">Username:</label>

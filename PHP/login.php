@@ -119,6 +119,29 @@ elseif (isset($_POST['login'])) {
             echo "Sorry, password is incorrect.";
         }
     }
+    $username = $_POST['username'];
+    // 准备查询用户信息的 SQL 语句
+    $stmt = $conn->prepare("SELECT id FROM user WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    // 获取查询结果
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $_SESSION['user_id'] = $row['id'];
+
+    // 准备查询用户信息的 SQL 语句
+    $stmt = $conn->prepare("SELECT birthday FROM user WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    // 获取查询结果
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $_SESSION['birthday'] = $row['birthday'];
+
 }
 
 // 关闭数据库连接

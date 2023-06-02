@@ -99,9 +99,9 @@
 
       <div id="editInfo" class="page">
         <h1>Edit Info</h1>
-        <form id="registerForm" onsubmit="return validatePhoneNumber()" method="post">
-          <label for="regUsername"><strong>Username:</strong></label>
-          <input type="text" id="regUsername" name="regUsername" required>
+        <form id="editForm" onsubmit="return validatePhoneNumber()" method="post">
+          <label for="username"><strong>Username:</strong></label>
+          <input type="text" id="regUsername" name="username" required disabled>
           <!-- <label for="regPassword"><strong>Password:</strong></label>
           <input type="password" id="regPassword" name="regPassword" placeholder="Enter your password" required>
           <div class="password-strength-meter">
@@ -127,47 +127,65 @@
           <label for="nationality">Nationality:</label>
           <select id="regNationality" name="nationality" class="select-style">
             <option value="">-- Please select --</option>
-            <option value="China">China🇨🇳</option>
-            <option value="America">America🇺🇸</option>
-            <option value="Australia">Australia🇦🇺</option>
-            <option value="Brazil">Brazil🇧🇷</option>
-            <option value="Canada">Canada🇨🇦</option>
-            <option value="Egypt">Egypt🇪🇬</option>
-            <option value="England">England🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
-            <option value="France">France🇫🇷</option>
-            <option value="Germany">Germany🇩🇪</option>
-            <option value="Greece">Greece🇬🇷</option>
-            <option value="India">India🇮🇳</option>
-            <option value="Indonesia">Indonesia🇮🇩</option>
-            <option value="Iran">Iran🇮🇷</option>
-            <option value="Italy">Italy🇮🇹</option>
-            <option value="Japan">Japan🇯🇵</option>
-            <option value="Korea">Korea🇰🇷</option>
-            <option value="Mexico">Mexico🇲🇽</option>
-            <option value="Nigeria">Nigeria🇳🇬</option>
-            <option value="Pakistan">Pakistan🇵🇰</option>
-            <option value="Philippines">Philippines🇵🇭</option>
-            <option value="Poland">Poland🇵🇱</option>
-            <option value="Portugal">Portugal🇵🇹</option>
-            <option value="Russia">Russia🇷🇺</option>
-            <option value="Saudi Arabia">Saudi Arabia🇸🇦</option>
-            <option value="South Africa">South Africa🇿🇦</option>
-            <option value="Spain">Spain🇪🇸</option>
-            <option value="Thailand">Thailand🇹🇭</option>
-            <option value="Turkey">Turkey🇹🇷</option>
-            <option value="Ukraine">Ukraine🇺🇦</option>
-            <option value="United Kingdom">United Kingdom🇬🇧</option>
-            <option value="Vietnam">Vietnam🇻🇳</option>
+            <option value="China🇨🇳">China🇨🇳</option>
+            <option value="America🇺🇸">America🇺🇸</option>
+            <option value="Australia🇦🇺">Australia🇦🇺</option>
+            <option value="Brazil🇧🇷">Brazil🇧🇷</option>
+            <option value="Canada🇨🇦">Canada🇨🇦</option>
+            <option value="Egypt🇪🇬">Egypt🇪🇬</option>
+            <option value="England🏴󠁧󠁢󠁥󠁮󠁧󠁿">England🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
+            <option value="France🇫🇷">France🇫🇷</option>
+            <option value="Germany🇩🇪">Germany🇩🇪</option>
+            <option value="Greece🇬🇷">Greece🇬🇷</option>
+            <option value="India🇮🇳">India🇮🇳</option>
+            <option value="Indonesia🇮🇩">Indonesia🇮🇩</option>
+            <option value="Iran🇮🇷">Iran🇮🇷</option>
+            <option value="Italy🇮🇹">Italy🇮🇹</option>
+            <option value="Japan🇯🇵">Japan🇯🇵</option>
+            <option value="Korea🇰🇷">Korea🇰🇷</option>
+            <option value="Mexico🇲🇽">Mexico🇲🇽</option>
+            <option value="Nigeria🇳🇬">Nigeria🇳🇬</option>
+            <option value="Pakistan🇵🇰">Pakistan🇵🇰</option>
+            <option value="Philippines🇵🇭">Philippines🇵🇭</option>
+            <option value="Poland🇵🇱">Poland🇵🇱</option>
+            <option value="Portugal🇵🇹">Portugal🇵🇹</option>
+            <option value="Russia🇷🇺">Russia🇷🇺</option>
+            <option value="Saudi Arabia🇸🇦">Saudi Arabia🇸🇦</option>
+            <option value="South Africa🇿🇦">South Africa🇿🇦</option>
+            <option value="Spain🇪🇸">Spain🇪🇸</option>
+            <option value="Thailand🇹🇭">Thailand🇹🇭</option>
+            <option value="Turkey🇹🇷">Turkey🇹🇷</option>
+            <option value="Ukraine🇺🇦">Ukraine🇺🇦</option>
+            <option value="United Kingdom🇬🇧">United Kingdom🇬🇧</option>
+            <option value="Vietnam🇻🇳">Vietnam🇻🇳</option>
           </select>
           <input type="submit" value="Edit" class="edit-button" id="edit-button" name="register">
         </form>
         <script src="../js/editUserInfo.js"></script>
-        <script src="../js/editArtwork.js"></script>
+        <!-- <script src="../js/editArtwork.js"></script> -->
       </div>
 
       <div id="changePassword" class="page">
         <h1>Change Password</h1>
+        <!-- <form id="passwordChangeForm" onsubmit="return validatechangePasswordForm()"> -->
+        <form id="passwordChangeForm">
+          <div class="form-field">
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+          </div>
+          <div class="form-field">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+          </div>
+          <div class="form-field">
+            <label for="confirmNewPassword">Confirm New Password:</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+          </div>
+          <input id="changePasswordButton" type="submit" value="Change">
+        </form>
+        <script src="../js/changePassword.js"></script>
       </div>
+
     </div>
   </div>
 

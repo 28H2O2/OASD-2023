@@ -2,37 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
 <body>
-    <audio id="bgm" loop autoplay>
-        <source src="../assets/music/canon.mp3" type="audio/mp3">
-        您的浏览器不支持音频元素。
-    </audio>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const bgm = document.getElementById('bgm');
-
-            function playAudio() {
-                bgm.play();
-                document.removeEventListener('click', playAudio);
-                document.removeEventListener('touchstart', playAudio);
-                document.removeEventListener('keydown', playAudio);
-            }
-
-            document.addEventListener('click', playAudio);
-            document.addEventListener('touchstart', playAudio);
-            document.addEventListener('keydown', playAudio);
-        });
-    </script>
+  <audio id="bgm">
+    <source src="../assets/music/canon.mp3" type="audio/mp3">
+  </audio>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let bgm = document.getElementById('bgm');
+      bgm.play();
+    });
+  </script>
 </body>
 
 </html>
