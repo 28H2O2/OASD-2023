@@ -119,7 +119,12 @@ function displayResults(artworks) {
 
 
 function displayResultSummary(totalCount) {
-    document.getElementById('resultSummary').textContent = `Found ${totalCount} results`;
+    if (totalCount < 2) {
+        document.getElementById('resultSummary').textContent = `Found ${totalCount} result`;
+    } else {
+        document.getElementById('resultSummary').textContent = `Found ${totalCount} results`;
+    }
+
 }
 
 function displayPagination(totalCount) {

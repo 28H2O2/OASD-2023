@@ -226,7 +226,12 @@ function renderCommentTree(comments, containerElem) {
     // 渲染评论
     let commentElem = document.createElement('div');
     commentElem.className = 'comment';
-    commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' likes)';
+    if (comment.likes < 2) {
+      commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' like)';
+    } else {
+      commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' likes)';
+    }
+
     containerElem.appendChild(commentElem);
 
     // 渲染子评论
@@ -254,7 +259,11 @@ function renderCommentTree(comments, containerElem) {
           if (data.status === 'success') {
             // Update the like count
             comment.likes = data.newLikeCount;
-            commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' likes)';
+            if (comment.likes < 2) {
+              commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' like)';
+            } else {
+              commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' likes)';
+            }
             likeButton.innerText = data.hasLiked ? 'Unlike' : 'Like';
           }
         });
@@ -285,7 +294,11 @@ function renderCommentTree(comments, containerElem) {
               // Mark the comment as deleted
               comment.deleted = true;
               commentElem.className = 'comment deletedComment';
-              commentElem.innerText = comment.username + ': this comment has been deleted (' + comment.likes + ' likes)';
+              if (comment.likes < 2) {
+                commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' like)';
+              } else {
+                commentElem.innerText = comment.username + ': ' + comment.text + ' (' + comment.likes + ' likes)';
+              }
             }
           });
       });
